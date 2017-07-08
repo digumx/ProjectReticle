@@ -1,0 +1,81 @@
+
+-------------- Clean: Release in Reticle (compiler: GNU GCC Compiler)---------------
+
+Cleaned "Reticle - Release"
+
+-------------- Build: Release in Reticle (compiler: GNU GCC Compiler)---------------
+
+g++ -Wall -std=c++11 -fexceptions -fPIC -O2 -std=c++11 -IHeaders -IIncludes -I/usr/include/libdrm -IHeaders -c /home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Includes/glm/detail/dummy.cpp -o obj/Release/Includes/glm/detail/dummy.o
+g++ -Wall -std=c++11 -fexceptions -fPIC -O2 -std=c++11 -IHeaders -IIncludes -I/usr/include/libdrm -IHeaders -c /home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Includes/glm/detail/glm.cpp -o obj/Release/Includes/glm/detail/glm.o
+g++ -Wall -std=c++11 -fexceptions -fPIC -O2 -std=c++11 -IHeaders -IIncludes -I/usr/include/libdrm -IHeaders -c /home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/Core/RetiLog.cpp -o obj/Release/Sources/Core/RetiLog.o
+g++ -Wall -std=c++11 -fexceptions -fPIC -O2 -std=c++11 -IHeaders -IIncludes -I/usr/include/libdrm -IHeaders -c /home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/Core/RetiSpinlock.cpp -o obj/Release/Sources/Core/RetiSpinlock.o
+g++ -Wall -std=c++11 -fexceptions -fPIC -O2 -std=c++11 -IHeaders -IIncludes -I/usr/include/libdrm -IHeaders -c /home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/Math/RetiTransform.cpp -o obj/Release/Sources/Math/RetiTransform.o
+g++ -Wall -std=c++11 -fexceptions -fPIC -O2 -std=c++11 -IHeaders -IIncludes -I/usr/include/libdrm -IHeaders -c /home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiCamera.cpp -o obj/Release/Sources/RetiCamera.o
+In file included from /home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiCamera.cpp:3:0:
+Headers/RetiCamera.h: In constructor ‘RetiCamera::RetiCamera(float, float, float, float)’:
+Headers/RetiCamera.h:18:11: warning: ‘RetiCamera::fov_y_degrees’ will be initialized after [-Wreorder]
+     float fov_y_degrees;
+           ^
+Headers/RetiCamera.h:15:11: warning:   ‘float RetiCamera::aspect_ratio’ [-Wreorder]
+     float aspect_ratio;
+           ^
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiCamera.cpp:15:1: warning:   when initialized here [-Wreorder]
+ RetiCamera::RetiCamera(float fov, float aspect, float np, float fp)
+ ^
+g++ -Wall -std=c++11 -fexceptions -fPIC -O2 -std=c++11 -IHeaders -IIncludes -I/usr/include/libdrm -IHeaders -c /home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiMaterial.cpp -o obj/Release/Sources/RetiMaterial.o
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiMaterial.cpp: In member function ‘void RetiMaterial::initialize_from_paths(const string&, const string&, std::vector<std::__cxx11::basic_string<char> >&)’:
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiMaterial.cpp:32:22: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for(int i = 0; i < tnames.size(); i++)
+                      ^
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiMaterial.cpp: In constructor ‘RetiMaterial::RetiMaterial(const string&, const string&, std::vector<std::__cxx11::basic_string<char> >&, std::vector<RetiTexture*>&)’:
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiMaterial.cpp:84:22: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for(int i = 0; i < texes.size(); i++)
+                      ^
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiMaterial.cpp: In member function ‘void RetiMaterial::loadMaterial()’:
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiMaterial.cpp:117:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         for(int i = 0; i < names.size(); i++)
+                          ^
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiMaterial.cpp:126:22: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for(int i = 0; i < names.size(); i++)
+                      ^
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiMaterial.cpp:130:22: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for(int i = 0; i < textures.size(); i++)
+                      ^
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiMaterial.cpp: In member function ‘void RetiMaterial::useMaterial()’:
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiMaterial.cpp:144:22: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for(int i = 0; i < textures.size(); i++)
+                      ^
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiMaterial.cpp: In member function ‘void RetiMaterial::unloadMaterial()’:
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiMaterial.cpp:153:22: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for(int i = 0; i < names.size(); i++)
+                      ^
+g++ -Wall -std=c++11 -fexceptions -fPIC -O2 -std=c++11 -IHeaders -IIncludes -I/usr/include/libdrm -IHeaders -c /home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiMesh.cpp -o obj/Release/Sources/RetiMesh.o
+g++ -Wall -std=c++11 -fexceptions -fPIC -O2 -std=c++11 -IHeaders -IIncludes -I/usr/include/libdrm -IHeaders -c /home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiRenderer.cpp -o obj/Release/Sources/RetiRenderer.o
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiRenderer.cpp: In copy constructor ‘RetiRenderer::RetiRenderer(const RetiRenderer&)’:
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiRenderer.cpp:94:22: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for(int i = 0; i < other.meshes.size(); i++)
+                      ^
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiRenderer.cpp: In destructor ‘RetiRenderer::~RetiRenderer()’:
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiRenderer.cpp:115:22: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for(int i = 0; i < meshes.size(); i++)
+                      ^
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiRenderer.cpp: In member function ‘void RetiRenderer::init_meshes()’:
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiRenderer.cpp:280:22: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for(int i = 0; i < meshes.size(); i++)
+                      ^
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiRenderer.cpp: In member function ‘void RetiRenderer::unload_meshes()’:
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiRenderer.cpp:286:22: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for(int i = 0; i < meshes.size(); i++)
+                      ^
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiRenderer.cpp: In member function ‘void RetiRenderer::render_internal()’:
+/home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiRenderer.cpp:316:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         for(int i = 0; i < meshes.size(); i++)
+                          ^
+g++ -Wall -std=c++11 -fexceptions -fPIC -O2 -std=c++11 -IHeaders -IIncludes -I/usr/include/libdrm -IHeaders -c /home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiShader.cpp -o obj/Release/Sources/RetiShader.o
+g++ -Wall -std=c++11 -fexceptions -fPIC -O2 -std=c++11 -IHeaders -IIncludes -I/usr/include/libdrm -IHeaders -c /home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.7a-linux/Reticle/Sources/RetiTexture.cpp -o obj/Release/Sources/RetiTexture.o
+g++ -shared  obj/Release/Includes/glm/detail/dummy.o obj/Release/Includes/glm/detail/glm.o obj/Release/Sources/Core/RetiLog.o obj/Release/Sources/Core/RetiSpinlock.o obj/Release/Sources/Math/RetiTransform.o obj/Release/Sources/RetiCamera.o obj/Release/Sources/RetiMaterial.o obj/Release/Sources/RetiMesh.o obj/Release/Sources/RetiRenderer.o obj/Release/Sources/RetiShader.o obj/Release/Sources/RetiTexture.o  -o bin/Release/libReticle.so -lGLEW -lGLU -lGL -lglfw -lpthread -s  
+Output file is bin/Release/libReticle.so with size 831.84 KB
+Process terminated with status 0 (0 minute(s), 18 second(s))
+0 error(s), 15 warning(s) (0 minute(s), 18 second(s))
+ 
+

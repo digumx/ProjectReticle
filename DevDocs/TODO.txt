@@ -1,0 +1,11 @@
+Switch to atomic in fundamental typed window params in RetiRenderer.
+Switch to atomic string for window title in RetiRenderer.
+Write a global setiings class.
+Make sure GLFW window related resources are released in the gpu_thread before thread termination.
+Allow changes to RetiTexture::texture_unit when loaded (make atomic).
+Make is_loaded an atomic bool.
+Write safe destructor for RetiSpinlock.
+Pass-return by reference check.
+Make the shader duplication prevention system more robust.
+Handle MVPs in material code.
+

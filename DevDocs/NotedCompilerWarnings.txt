@@ -1,0 +1,6 @@
+Total: 7.
+
+All compiler warnings regarding comparing/assigning deprecated c-style strings even in c++11(2 noted yet).
+
+Comparision between signed and unsigned integers(4 noted).
+

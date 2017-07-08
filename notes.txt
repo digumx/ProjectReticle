@@ -1,0 +1,3 @@
+This is a file to act as a reference cum to-do list for writing the docs.
+
+Note that the extern variable g_retiRoot is defined in RetiRenderer.cpp provisionally.

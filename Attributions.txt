@@ -1,0 +1,1 @@
+Thank you very much Sean T. Barrett for the stb_image library.

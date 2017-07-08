@@ -1,0 +1,55 @@
+EXPORTS
+    _Z12err_callbackiPKc @1
+    _ZN10RetiShader10loadShaderEv @2
+    _ZN10RetiShader14compile_shaderERjPcj @3
+    _ZN10RetiShader15setActiveShaderEv @4
+    _ZN10RetiShader15useVertexShaderEPc @5
+    _ZN10RetiShader16load_shader_codeEPKc @6
+    _ZN10RetiShader17useFragmentShaderEPc @7
+    _ZN10RetiShaderC1EPKcS1_ @8
+    _ZN10RetiShaderC1ERKS_ @9
+    _ZN10RetiShaderC1Ev @10
+    _ZN10RetiShaderC2EPKcS1_ @11
+    _ZN10RetiShaderC2ERKS_ @12
+    _ZN10RetiShaderC2Ev @13
+    _ZN10RetiShaderD1Ev @14
+    _ZN10RetiShaderD2Ev @15
+    _ZN10RetiShaderaSERKS_ @16
+    _ZN12RetiRenderer10nInstancesE @17 DATA
+    _ZN12RetiRenderer11init_meshesEv @18
+    _ZN12RetiRenderer11init_shaderEv @19
+    _ZN12RetiRenderer13init_rendererEv @20
+    _ZN12RetiRenderer13setClearColorEfff @21
+    _ZN12RetiRenderer13setWindowSizeEii @22
+    _ZN12RetiRenderer13startRendererEv @23
+    _ZN12RetiRenderer14setWindowTitleEPc @24
+    _ZN12RetiRenderer20getFullVersionStringEv @25
+    _ZN12RetiRenderer23getReticleRootDirectoryEv @26
+    _ZN12RetiRenderer23setReticleRootDirectoryEPc @27
+    _ZN12RetiRenderer3logE @28 DATA
+    _ZN12RetiRenderer4initEv @29
+    _ZN12RetiRenderer7addMeshEP8RetiMesh @30
+    _ZN12RetiRenderer7addMeshEPfiPji @31
+    _ZN12RetiRenderer8retiRootE @32 DATA
+    _ZN12RetiRenderer9init_glewEv @33
+    _ZN12RetiRenderer9init_glfwEv @34
+    _ZN12RetiRendererC1ERKS_ @35
+    _ZN12RetiRendererC1Eb @36
+    _ZN12RetiRendererC1Ev @37
+    _ZN12RetiRendererC2ERKS_ @38
+    _ZN12RetiRendererC2Eb @39
+    _ZN12RetiRendererC2Ev @40
+    _ZN12RetiRendererD1Ev @41
+    _ZN12RetiRendererD2Ev @42
+    _ZN8RetiMesh6renderEv @43
+    _ZN8RetiMesh8loadMeshEv @44
+    _ZN8RetiMeshC1EPKfiPKji @45
+    _ZN8RetiMeshC1ERKS_ @46
+    _ZN8RetiMeshC2EPKfiPKji @47
+    _ZN8RetiMeshC2ERKS_ @48
+    _ZN8RetiMeshD1Ev @49
+    _ZN8RetiMeshD2Ev @50
+    _ZN8RetiMeshaSERKS_ @51
+    _ZNKSt5ctypeIcE8do_widenEc @52
+    _ZNSt6vectorIP8RetiMeshSaIS1_EE19_M_emplace_back_auxIIRKS1_EEEvDpOT_ @53
+    _get_output_format @54

@@ -1,0 +1,19 @@
+Log Opened on: 21-06-2017 13:01:30
+Loading file: /home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.4a-linux/Reticle/Resources/Textures/default.jpg
+Number of texture uniforms: 1
+Number of texture uniforms: 1
+Initializing GLFW.
+GLFW initialization complete.
+Creating window
+Created window
+Initializing GLEW.
+GLEW initialization complete.
+Loading texture uniforms: 
+:colorTexture:
+Loading Texture
+Loading texture uniforms: 
+:colorTexture:
+Stopping Renderer
+Breaking Out.
+Renderer Stopped
+Log closed.
