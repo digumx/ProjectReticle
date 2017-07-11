@@ -1,12 +1,33 @@
-[29-06-2017 00:19:01]    Log Opened
-[29-06-2017 00:19:01]    Loading file: /home/digumx/Dev/OpenGL/ProjectReticle/ReticleRenderer/Reticle-0.0.6a-linux/Reticle/Resources/Textures/default.tga
-[29-06-2017 00:19:01]    Initializing GLFW.
-[29-06-2017 00:19:01]    GLFW initialization complete.
-[29-06-2017 00:19:01]    Creating window
-[29-06-2017 00:19:01]    Created window
-[29-06-2017 00:19:01]    Initializing GLEW.
-[29-06-2017 00:19:01]    GLEW initialization complete.
-[29-06-2017 00:19:01]    Loading texture uniforms: 
-[29-06-2017 00:19:01]    :colorTexture:
-[29-06-2017 00:19:01]    Loading texture uniforms: 
-[29-06-2017 00:19:01]    :colorTexture:
+[11-07-2017 19:01:07]    Log Opened
+[11-07-2017 19:01:07]    Loading file: D:\Dev\GitRepos\ProjectReticle\Reticle/Resources/Textures/default.tga
+[11-07-2017 19:01:07]    Loading file: D:\Dev\OpenGL\ProjectReticle\Resources\RUDDLEFT_scaled.jpg
+[11-07-2017 19:01:07]    GLuint size:4
+[11-07-2017 19:01:07]    ASSIMP ERROR: f
+[11-07-2017 19:01:07]    Processing mesh: 51948 17316
+[11-07-2017 19:01:07]    Processing mesh: 582 194
+[11-07-2017 19:01:07]    Processing mesh: 582 194
+[11-07-2017 19:01:07]    Processing mesh: 61020 20340
+[11-07-2017 19:01:07]    Initializing GLFW.
+[11-07-2017 19:01:08]    GLFW initialization complete.
+[11-07-2017 19:01:08]    Creating window
+[11-07-2017 19:01:08]    Created window
+[11-07-2017 19:01:08]    Initializing GLEW.
+[11-07-2017 19:01:08]    GLEW initialization complete.
+[11-07-2017 19:01:08]    Max Verts: 1048576 Max Indices: 1048576
+[11-07-2017 19:01:08]    Vertex data buffer size: 259740
+[11-07-2017 19:01:08]    Triangle buffer size: 51948
+[11-07-2017 19:01:08]    Loading texture uniforms: 
+[11-07-2017 19:01:08]    :colorTexture:
+[11-07-2017 19:01:08]    Max Verts: 1048576 Max Indices: 1048576
+[11-07-2017 19:01:08]    Vertex data buffer size: 2910
+[11-07-2017 19:01:08]    Triangle buffer size: 582
+[11-07-2017 19:01:08]    Max Verts: 1048576 Max Indices: 1048576
+[11-07-2017 19:01:08]    Vertex data buffer size: 2910
+[11-07-2017 19:01:08]    Triangle buffer size: 582
+[11-07-2017 19:01:08]    Max Verts: 1048576 Max Indices: 1048576
+[11-07-2017 19:01:08]    Vertex data buffer size: 305100
+[11-07-2017 19:01:08]    Triangle buffer size: 61020
+[11-07-2017 19:01:08]    Object Loaded.
+[11-07-2017 19:01:14]    Unload called on object1
+[11-07-2017 19:01:14]    Unloading object
+[11-07-2017 19:01:14]    GPUT Cleanup complete.

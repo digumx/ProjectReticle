@@ -5,15 +5,15 @@
 		<Option title="Reticle" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="Headers/Core/;Sources/;" />
+		<Option virtualFolders="Headers\Core\;Sources\;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/Reticle" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="bin/Debug" />
+				<Option working_dir="" />
 				<Option object_output="obj/Debug/" />
-				<Option type="3" />
+				<Option type="2" />
 				<Option compiler="gcc" />
-				<Option host_application="/home/digumx/Dev/OpenGL/ProjectReticle/UnitTests/RetiTest2/bin/Debug/RetiTest2" />
+				<Option host_application="D:/Dev/OpenGL/ProjectReticle/Tests/Test2/bin/Debug/Test1.exe" />
 				<Option run_host_application_in_terminal="1" />
 				<Option createDefFile="1" />
 				<Compiler>
@@ -24,9 +24,9 @@
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/Reticle" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="bin/Release" />
+				<Option working_dir="" />
 				<Option object_output="obj/Release/" />
-				<Option type="3" />
+				<Option type="2" />
 				<Option compiler="gcc" />
 				<Option createDefFile="1" />
 				<Compiler>
@@ -42,14 +42,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-std=c++11" />
-			<Add option="-fexceptions -fPIC" />
+			<Add option="-fexceptions" />
 			<Add directory="Headers" />
 			<Add directory="Includes" />
-			<Add directory="/usr/include/libdrm" />
 		</Compiler>
-		<Linker>
-			<Add option="-lGLEW -lGLU -lGL -lglfw -lpthread" />
-		</Linker>
 		<Unit filename="Headers/Core/RetiLog.h" />
 		<Unit filename="Headers/Core/RetiSpinlock.h" />
 		<Unit filename="Headers/Math/RetiTransform.h" />
@@ -57,6 +53,7 @@
 		<Unit filename="Headers/RetiMaterial.h" />
 		<Unit filename="Headers/RetiMesh.h" />
 		<Unit filename="Headers/RetiRenderer.h" />
+		<Unit filename="Headers/RetiSceneObject.h" />
 		<Unit filename="Headers/RetiShader.h" />
 		<Unit filename="Headers/RetiTexture.h" />
 		<Unit filename="Headers/includes.h" />
@@ -221,6 +218,7 @@
 		<Unit filename="Sources/RetiMaterial.cpp" />
 		<Unit filename="Sources/RetiMesh.cpp" />
 		<Unit filename="Sources/RetiRenderer.cpp" />
+		<Unit filename="Sources/RetiSceneObject.cpp" />
 		<Unit filename="Sources/RetiShader.cpp" />
 		<Unit filename="Sources/RetiTexture.cpp" />
 		<Extensions>
