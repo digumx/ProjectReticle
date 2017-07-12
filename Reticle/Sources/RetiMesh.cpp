@@ -98,25 +98,12 @@ void RetiMesh::loadMesh()
     glGenBuffers(1, &vertex_buffer_id);
     glGenBuffers(1, &triangle_buffer_id);
 
-    #ifdef DEBUG_CODE
-    GLint maxVerts, maxInds;
-    glGetIntegerv(GL_MAX_ELEMENTS_VERTICES, &maxVerts);
-    glGetIntegerv(GL_MAX_ELEMENTS_INDICES, &maxInds);
-    RetiLog::logln("Max Verts: " + to_string(maxVerts) + " Max Indices: " + to_string(maxInds));
-    #endif // DEBUG_CODE
-
     glBindVertexArray(vao_id);
 
     glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer_id);
-    #ifdef DEBUG_CODE
-    RetiLog::logln("Vertex data buffer size: " + to_string(vertex_data_size));
-    #endif
     glBufferData(GL_ARRAY_BUFFER, vertex_data_size * sizeof(GLfloat), vertex_data, GL_STATIC_DRAW);
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, triangle_buffer_id);
-    #ifdef DEBUG_CODE
-    RetiLog::logln("Triangle buffer size: " + to_string(triangle_size));
-    #endif // DEBUG_CODE
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, triangle_size * sizeof(GLuint), triangle, GL_STATIC_DRAW);
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*) 0);

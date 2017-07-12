@@ -41,9 +41,10 @@ void RetiSceneObject::process_materials(const aiScene* scene, const string& dir,
 void RetiSceneObject::process_mesh(aiMesh* mesh, const aiScene* scene, RetiTransform& parent,
                                    vector<RetiMaterial*>& mats, vector<bool>& used_mats)
 {
-    #ifdef DEBUG_CODE
-    RetiLog::logln("Processing mesh: " +    to_string(mesh->mNumVertices) + " " + to_string(mesh->mNumFaces));
-    #endif // DEBUG_CODE
+    #ifdef VERBOSE_ON
+    RetiLog::logln("Processing mesh with: " +    to_string(mesh->mNumVertices) + " vertices and " +
+                   to_string(mesh->mNumFaces) + " trianhles");
+    #endif // VERBOSE_ON
 
     float* vertCoords =     new float[mesh->mNumVertices * 3];
     float* texCoords =      new float[mesh->mNumVertices * 2];
@@ -108,12 +109,6 @@ void RetiSceneObject::process_node(aiNode* node, const aiScene* scene, RetiTrans
     if(! ang==0) node_trf->rotateTransform(ang, x, y, z);
     node_trf->translateTransform(pos.x, pos.y, pos.z);
 
-    #ifdef DEBUG_CODE
-    RetiLog::logln("Scaling by: " + to_string(scale.x) + ", " + to_string(scale.y) + ", " + to_string(scale.z));
-    RetiLog::logln("Rotating by: " + to_string(ang) + ", " + to_string(x) + ", " + to_string(y) + ", " + to_string(z));
-    RetiLog::logln("Translating by: " + to_string(pos.x) + ", " + to_string(pos.y) + ", " + to_string(pos.z));
-    #endif // DEBUG_CODE
-
     for(int i = 0; i < node->mNumMeshes; i++)
     {
         aiMesh* msh = scene->mMeshes[node->mMeshes[i]];
@@ -128,14 +123,10 @@ RetiSceneObject::RetiSceneObject(const string& path)
     is_loaded = false;
     Assimp::Importer importer;
     const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_SortByPType);
-    #ifdef DEBUG_CODE
-    RetiLog::logln("GLuint size:" + to_string(sizeof(GLuint)));
-    #endif // DEBUG_CODE
     string err(importer.GetErrorString());
-    //#ifndef DEBUG_CODE
     if(!scene || !(scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE) || !scene->mRootNode)
-    //#endif // DEBUG_CODE
-        RetiLog::logln("ASSIMP ERROR: " + string(importer.GetErrorString()) + ((scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE) ? "t" : "f"));  ///DEBUG_CODE
+        RetiLog::logln("ASSIMP ERROR: " + string(importer.GetErrorString()) +
+                       "Scene flags incomplete: " + ((scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE) ? "t" : "f"));
 
     string directory = path.substr(0, path.find_last_of(FILEPATH_SEPARATOR));
 
@@ -208,9 +199,6 @@ RetiSceneObject::~RetiSceneObject()
 
 RetiSceneObject& RetiSceneObject::operator=(const RetiSceneObject& other)
 {
-    #ifdef DEBUG_CODE
-    RetiLog::logln("Assignment called, is loaded: " + to_string(is_loaded));
-    #endif // DEBUG_CODE
     is_loaded = false;
     root_transf = other.root_transf;
     meshes.clear();
@@ -264,20 +252,11 @@ void RetiSceneObject::loadObject()
     for(int i = 0; i < meshes.size(); i++)
         meshes[i].mesh->loadMesh();
     is_loaded = true;
-    #ifdef DEBUG_CODE
-    RetiLog::logln("Object Loaded.");
-    #endif // DEBUG_CODE
 }
 
 void RetiSceneObject::unloadObject()
 {
-    #ifdef DEBUG_CODE
-    RetiLog::logln("Unload called on object" + to_string(is_loaded));
-    #endif // DEBUG_CODE
     if(!is_loaded) return;
-    #ifdef DEBUG_CODE
-    RetiLog::logln("Unloading object");
-    #endif // DEBUG_CODE
     for(int i = 0; i < meshes.size(); i++)
         meshes[i].mesh->unloadMesh();
     is_loaded = false;
