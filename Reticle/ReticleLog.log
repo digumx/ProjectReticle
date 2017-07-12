@@ -1,33 +1,51 @@
-[11-07-2017 19:01:07]    Log Opened
-[11-07-2017 19:01:07]    Loading file: D:\Dev\GitRepos\ProjectReticle\Reticle/Resources/Textures/default.tga
-[11-07-2017 19:01:07]    Loading file: D:\Dev\OpenGL\ProjectReticle\Resources\RUDDLEFT_scaled.jpg
-[11-07-2017 19:01:07]    GLuint size:4
-[11-07-2017 19:01:07]    ASSIMP ERROR: f
-[11-07-2017 19:01:07]    Processing mesh: 51948 17316
-[11-07-2017 19:01:07]    Processing mesh: 582 194
-[11-07-2017 19:01:07]    Processing mesh: 582 194
-[11-07-2017 19:01:07]    Processing mesh: 61020 20340
-[11-07-2017 19:01:07]    Initializing GLFW.
-[11-07-2017 19:01:08]    GLFW initialization complete.
-[11-07-2017 19:01:08]    Creating window
-[11-07-2017 19:01:08]    Created window
-[11-07-2017 19:01:08]    Initializing GLEW.
-[11-07-2017 19:01:08]    GLEW initialization complete.
-[11-07-2017 19:01:08]    Max Verts: 1048576 Max Indices: 1048576
-[11-07-2017 19:01:08]    Vertex data buffer size: 259740
-[11-07-2017 19:01:08]    Triangle buffer size: 51948
-[11-07-2017 19:01:08]    Loading texture uniforms: 
-[11-07-2017 19:01:08]    :colorTexture:
-[11-07-2017 19:01:08]    Max Verts: 1048576 Max Indices: 1048576
-[11-07-2017 19:01:08]    Vertex data buffer size: 2910
-[11-07-2017 19:01:08]    Triangle buffer size: 582
-[11-07-2017 19:01:08]    Max Verts: 1048576 Max Indices: 1048576
-[11-07-2017 19:01:08]    Vertex data buffer size: 2910
-[11-07-2017 19:01:08]    Triangle buffer size: 582
-[11-07-2017 19:01:08]    Max Verts: 1048576 Max Indices: 1048576
-[11-07-2017 19:01:08]    Vertex data buffer size: 305100
-[11-07-2017 19:01:08]    Triangle buffer size: 61020
-[11-07-2017 19:01:08]    Object Loaded.
-[11-07-2017 19:01:14]    Unload called on object1
-[11-07-2017 19:01:14]    Unloading object
-[11-07-2017 19:01:14]    GPUT Cleanup complete.
+[12-07-2017 08:59:06]    Log Opened
+[12-07-2017 08:59:06]    Loading file: D:\Dev\GitRepos\ProjectReticle\Reticle/Resources/Textures/default.tga
+[12-07-2017 08:59:06]    GLuint size:4
+[12-07-2017 08:59:06]    ASSIMP ERROR: f
+[12-07-2017 08:59:06]    Scaling by: 1.000000, 1.000000, 1.000000
+[12-07-2017 08:59:06]    Rotating by: 1.570796, -1.000000, 0.000000, 0.000000
+[12-07-2017 08:59:06]    Translating by: 0.000000, 0.000000, 0.000000
+[12-07-2017 08:59:06]    Scaling by: 1.000000, 1.000000, 1.000000
+[12-07-2017 08:59:06]    Rotating by: 0.000000, 0.000000, 1396357678687681281952621527040000.000000, nan
+[12-07-2017 08:59:06]    Translating by: 0.000000, 0.000000, 10.334688
+[12-07-2017 08:59:06]    Scaling by: 1.000000, 1.000000, 1.000000
+[12-07-2017 08:59:06]    Rotating by: 0.000000, 0.000000, 1396357678687681281952621527040000.000000, nan
+[12-07-2017 08:59:06]    Translating by: -10.876953, 0.060356, 1.195400
+[12-07-2017 08:59:06]    Processing mesh: 51948 17316
+[12-07-2017 08:59:06]    Scaling by: 1.000000, 1.000000, 1.000000
+[12-07-2017 08:59:06]    Rotating by: 0.000000, 0.000000, 1396357678687681281952621527040000.000000, nan
+[12-07-2017 08:59:06]    Translating by: 64.437622, -158.867493, 0.056401
+[12-07-2017 08:59:06]    Processing mesh: 582 194
+[12-07-2017 08:59:06]    Scaling by: 1.000000, 1.000000, 1.000000
+[12-07-2017 08:59:06]    Rotating by: 0.000000, 0.000000, 1396357678687681281952621527040000.000000, nan
+[12-07-2017 08:59:06]    Translating by: 64.437622, 158.867462, 0.056401
+[12-07-2017 08:59:06]    Processing mesh: 582 194
+[12-07-2017 08:59:06]    Scaling by: 1.000000, 1.000000, 1.000000
+[12-07-2017 08:59:06]    Rotating by: 0.000000, 0.000000, 1396357678687681281952621527040000.000000, nan
+[12-07-2017 08:59:06]    Translating by: 0.000000, -0.042198, -0.181398
+[12-07-2017 08:59:06]    Processing mesh: 61020 20340
+[12-07-2017 08:59:06]    Initializing GLFW.
+[12-07-2017 08:59:06]    GLFW initialization complete.
+[12-07-2017 08:59:06]    Creating window
+[12-07-2017 08:59:07]    Created window
+[12-07-2017 08:59:07]    Initializing GLEW.
+[12-07-2017 08:59:07]    GLEW initialization complete.
+[12-07-2017 08:59:07]    Max Verts: 1048576 Max Indices: 1048576
+[12-07-2017 08:59:07]    Vertex data buffer size: 259740
+[12-07-2017 08:59:07]    Triangle buffer size: 51948
+[12-07-2017 08:59:07]    Loading texture uniforms: 
+[12-07-2017 08:59:07]    :colorTexture:
+[12-07-2017 08:59:07]    Max Verts: 1048576 Max Indices: 1048576
+[12-07-2017 08:59:07]    Vertex data buffer size: 2910
+[12-07-2017 08:59:07]    Triangle buffer size: 582
+[12-07-2017 08:59:07]    Max Verts: 1048576 Max Indices: 1048576
+[12-07-2017 08:59:07]    Vertex data buffer size: 2910
+[12-07-2017 08:59:07]    Triangle buffer size: 582
+[12-07-2017 08:59:07]    Max Verts: 1048576 Max Indices: 1048576
+[12-07-2017 08:59:07]    Vertex data buffer size: 305100
+[12-07-2017 08:59:07]    Triangle buffer size: 61020
+[12-07-2017 08:59:07]    Object Loaded.
+[12-07-2017 08:59:10]    Unload called on object1
+[12-07-2017 08:59:10]    Unloading object
+[12-07-2017 08:59:10]    GPUT Cleanup complete.
+[12-07-2017 08:59:11]    Log Closed

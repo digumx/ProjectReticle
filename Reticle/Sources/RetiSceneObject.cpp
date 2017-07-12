@@ -1,3 +1,7 @@
+#include <cmath>
+
+#include <includes.h>
+
 #include <RetiSceneObject.h>
 #include <RetiMesh.h>
 #include <RetiMaterial.h>
@@ -5,6 +9,14 @@
 #include <Core/RetiLog.h>
 
 using namespace std;
+
+void copy_aiMat4_glmMat4(aiMatrix4x4& aiMat, glm::mat4& glmMat)
+{
+    glmMat[0].x = aiMat.a1; glmMat[0].y = aiMat.a2; glmMat[0].z = aiMat.a3; glmMat[0].w = aiMat.a4;
+    glmMat[1].x = aiMat.b1; glmMat[1].y = aiMat.b2; glmMat[1].z = aiMat.b3; glmMat[1].w = aiMat.b4;
+    glmMat[2].x = aiMat.c1; glmMat[2].y = aiMat.c2; glmMat[2].z = aiMat.c3; glmMat[2].w = aiMat.c4;
+    glmMat[3].x = aiMat.d1; glmMat[3].y = aiMat.d2; glmMat[3].z = aiMat.d3; glmMat[3].w = aiMat.d4;
+}
 
 void RetiSceneObject::process_materials(const aiScene* scene, const string& dir,
                                          vector<RetiMaterial*>& mats, vector<bool>& used_mats)
@@ -77,8 +89,31 @@ void RetiSceneObject::process_mesh(aiMesh* mesh, const aiScene* scene, RetiTrans
 void RetiSceneObject::process_node(aiNode* node, const aiScene* scene, RetiTransform& parent,
                                    vector<RetiMaterial*>& mats, vector<bool>& used_mats)
 {
+    aiVector3t<float> scale, pos;
+    aiQuaterniont<float> rot;
+    node->mTransformation.Decompose(scale, rot, pos);
+
+    float ang = 2 * acos(rot.w);
+    float x, y, z;
+    if(! ang==0)
+    {
+        x = rot.x / sqrt(1 - rot.w*rot.w);
+        y = rot.y / sqrt(1 - rot.w*rot.w);
+        z = rot.z / sqrt(1 - rot.w*rot.w);
+    }
+
     RetiTransform* node_trf = new RetiTransform();
     node_trf->setParent(parent);
+    node_trf->scaleTransform(scale.x, scale.y, scale.z);
+    if(! ang==0) node_trf->rotateTransform(ang, x, y, z);
+    node_trf->translateTransform(pos.x, pos.y, pos.z);
+
+    #ifdef DEBUG_CODE
+    RetiLog::logln("Scaling by: " + to_string(scale.x) + ", " + to_string(scale.y) + ", " + to_string(scale.z));
+    RetiLog::logln("Rotating by: " + to_string(ang) + ", " + to_string(x) + ", " + to_string(y) + ", " + to_string(z));
+    RetiLog::logln("Translating by: " + to_string(pos.x) + ", " + to_string(pos.y) + ", " + to_string(pos.z));
+    #endif // DEBUG_CODE
+
     for(int i = 0; i < node->mNumMeshes; i++)
     {
         aiMesh* msh = scene->mMeshes[node->mMeshes[i]];
@@ -108,6 +143,7 @@ RetiSceneObject::RetiSceneObject(const string& path)
     vector<bool> used_mats;
     process_materials(scene, directory, mats, used_mats);
     process_node(scene->mRootNode, scene, root_transf, mats, used_mats);
+    for(int i = 0; i < mats.size(); i++) if(!used_mats[i]) delete mats[i];
 }
 
 RetiSceneObject::RetiSceneObject(RetiMesh* msh, RetiTransform& trf) : root_transf()
