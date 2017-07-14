@@ -377,3 +377,13 @@ void RetiRenderer::useCamera(RetiCamera* n_cam)
     cam = n_cam;
     is_cam_user = true;
 }
+
+void setStickyKeys(bool sticky)
+{
+    sticky_keys = sticky;
+}
+
+bool getKey(RetiKey key)
+{
+    return true; /// TODO INCOMPLETE
+}
