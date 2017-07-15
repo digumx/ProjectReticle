@@ -54,6 +54,7 @@
 		<Unit filename="Headers/Core/RetiSpinlock.h" />
 		<Unit filename="Headers/Math/RetiTransform.h" />
 		<Unit filename="Headers/RetiCamera.h" />
+		<Unit filename="Headers/RetiKeyboard.h" />
 		<Unit filename="Headers/RetiMaterial.h" />
 		<Unit filename="Headers/RetiMesh.h" />
 		<Unit filename="Headers/RetiRenderer.h" />
@@ -218,6 +219,7 @@
 		<Unit filename="Sources/Core/RetiSpinlock.cpp" />
 		<Unit filename="Sources/Math/RetiTransform.cpp" />
 		<Unit filename="Sources/RetiCamera.cpp" />
+		<Unit filename="Sources/RetiKeyboard.cpp" />
 		<Unit filename="Sources/RetiMaterial.cpp" />
 		<Unit filename="Sources/RetiMesh.cpp" />
 		<Unit filename="Sources/RetiRenderer.cpp" />

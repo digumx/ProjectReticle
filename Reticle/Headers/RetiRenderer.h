@@ -19,17 +19,10 @@ enum RetiRendererState
     RETI_RENDERER_STATE_ACTIVE
 };
 
-enum RetiKey : int
-{
-    RETI_KEY_A = 65,
-    RETI_KEY_D = 68,
-    RETI_KEY_S = 83,
-    RETI_KEY_W = 87
-};
-
 class RetiShader;
 class RetiMesh;
 class RetiCamera;
+class RetiKeyboard;
 
 class RetiRenderer
 {
@@ -42,7 +35,8 @@ private:
     static bool is_glfw_init;                  //TODO: Make Atomic
 
     bool detach_renderer;
-    bool sticky_keys;
+
+    RetiKeyboard* keyb;
 
     RetiRendererState renderer_state;
     std::atomic<bool> is_renderer_paused;
@@ -79,7 +73,6 @@ private:
     void gput_post_renderer_cleanup();
 
 public:
-
     RetiRenderer();
     RetiRenderer(bool detach);
     RetiRenderer(const RetiRenderer& other);
@@ -93,32 +86,9 @@ public:
     const char* getFullVersionString();
 
     RetiRendererState getRedererState() const;
+    RetiKeyboard& getKeyboard();
 
-    /** Setting this to true forces the GPU thread to run on the thread that calls
-    *   startRenderer().
-    *
-    *   This will make the startRenderer() function call non-latent, and will return only when
-    *   rendering is stopped by closing the windows.
-    */
     void setDetachRenderer(bool detach);
-
-    /** This will turn on sticky keys for key press calls.
-    *
-    *   Consider this situation: Your code, somehow, begins to poll key calls every 2s (which
-    *   is a very long time for key polling), and the user manages to press and release a key in
-    *   those three seconds. Normally, the keypress would have gone unregistered under this
-    *   situation. However, with sticky keys on, the next poll will catch the keypress. Note that
-    *   if multiple keypresses are generated, this will only catch a single press. Also that repolls
-    *   immediately after the sticky polls will not re-catch the same keypress. In general, if you
-    *   are writing a real-time and/or an interactive application, polling keypresses quickly is
-    *   probably a better solution than this.
-    */
-    void setStickyKeys(bool sticky);
-
-    /** Returns if a is pressed.
-    */
-    bool getKey(RetiKey key);
-
     void setWindowTitle(std::string str);
     void setWindowSize(int x, int y);
     void setClearColor(GLfloat R, GLfloat G, GLfloat B);
