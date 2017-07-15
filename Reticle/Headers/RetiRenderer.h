@@ -87,6 +87,7 @@ public:
 
     RetiRendererState getRedererState() const;
     RetiKeyboard& getKeyboard();
+    RetiCamera& getCamera();
 
     void setDetachRenderer(bool detach);
     void setWindowTitle(std::string str);

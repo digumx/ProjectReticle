@@ -16,6 +16,7 @@ enum RetiKey : int
     D       = 68,
     S       = 83,
     W       = 87,
+    ESCAPE  = 256,
     RIGHT   = 262,
     LEFT    = 263,
     DOWN    = 264,

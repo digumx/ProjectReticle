@@ -431,3 +431,8 @@ RetiKeyboard& RetiRenderer::getKeyboard()
 {
     return *keyb;
 }
+
+RetiCamera& RetiRenderer::getCamera()
+{
+    return *cam;
+}
