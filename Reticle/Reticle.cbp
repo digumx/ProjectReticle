@@ -13,7 +13,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="3" />
 				<Option compiler="gcc" />
-				<Option host_application="/home/digumx/Dev/OpenGL/ProjectReticle/UnitTests/RetiTest2/bin/Debug/RetiTest2" />
+				<Option host_application="/mnt/data/git-repos/ReticleLinuxTest/bin/Debug/ReticleLinuxTest" />
 				<Option run_host_application_in_terminal="1" />
 				<Option createDefFile="1" />
 				<Compiler>
