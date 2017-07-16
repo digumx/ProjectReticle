@@ -1,18 +1,19 @@
-[17-07-2017 00:37:21]    Log Opened
-[17-07-2017 00:37:21]    Loading file: /mnt/data/git-repos/ProjectReticle/Reticle/Resources/Textures/default.tga
-[17-07-2017 00:37:21]    ASSIMP ERROR: 
-[17-07-2017 00:37:21]    Processing mesh with: 12732 vertices and 4244 trianhles
-[17-07-2017 00:37:21]    Initializing GLFW.
-[17-07-2017 00:37:21]    GLFW initialization complete.
-[17-07-2017 00:37:21]    Creating window
-[17-07-2017 00:37:21]    Created window
-[17-07-2017 00:37:21]    Initializing GLEW.
-[17-07-2017 00:37:21]    GLEW initialization complete.
-[17-07-2017 00:37:21]    WARNING: MVP position matrix position is not strictly positive.
-[17-07-2017 00:37:21]    Loading texture uniforms: 
-[17-07-2017 00:37:21]    :colorTexture:
-[17-07-2017 00:37:21]    WARNING: MVP position matrix position is not strictly positive.
-[17-07-2017 00:37:26]    Stopping Renderer
-[17-07-2017 00:37:26]    Breaking Out.
-[17-07-2017 00:37:26]    GPUT Cleanup complete.
-[17-07-2017 00:37:28]    Renderer stopped
+[17-07-2017 02:29:42]    Log Opened
+[17-07-2017 02:29:42]    Loading file: /mnt/data/git-repos/ProjectReticle/Reticle/Resources/Textures/default.tga
+[17-07-2017 02:29:42]    ASSIMP ERROR: 
+[17-07-2017 02:29:42]    Processing mesh with: 12732 vertices and 4244 trianhles
+[17-07-2017 02:29:42]    Initializing GLFW.
+[17-07-2017 02:29:42]    GLFW initialization complete.
+[17-07-2017 02:29:42]    Creating window
+[17-07-2017 02:29:42]    Created window
+[17-07-2017 02:29:42]    Initializing GLEW.
+[17-07-2017 02:29:42]    GLEW initialization complete.
+[17-07-2017 02:29:42]    WARNING: MVP position matrix position is not strictly positive.
+[17-07-2017 02:29:42]    Loading texture uniforms: 
+[17-07-2017 02:29:42]    :colorTexture:
+[17-07-2017 02:29:42]    WARNING: MVP position matrix position is not strictly positive.
+[17-07-2017 02:29:47]    Stopping Renderer
+[17-07-2017 02:29:47]    Breaking Out.
+[17-07-2017 02:29:47]    GPUT Cleanup complete.
+[17-07-2017 02:29:49]    Renderer stopped
+[17-07-2017 02:29:49]    Log Closed
