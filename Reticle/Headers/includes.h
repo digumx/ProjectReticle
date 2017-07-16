@@ -3,7 +3,7 @@
 
 #define DEBUG_CODE
 #define VERBOSE_ON
-#define PLATFORM_WINDOWS
+//#define PLATFORM_WINDOWS
 //#define PLATFORM_LINUX
 
 #define GLEW_NO_GLU

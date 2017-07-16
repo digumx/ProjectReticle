@@ -1,2 +1,21 @@
-[16-07-2017 18:43:50]    Log Opened
-[16-07-2017 18:43:50]    Loading file: /mnt/data/git-repos/ProjectReticle/Reticle/Resources/Textures/default.tga
+[16-07-2017 19:44:36]    Log Opened
+[16-07-2017 19:44:36]    Loading file: /mnt/data/git-repos/ProjectReticle/Reticle/Resources/Textures/default.tga
+[16-07-2017 19:44:36]    ASSIMP ERROR: 
+[16-07-2017 19:44:36]    Loading file: /mnt/data/3DModels/Jug/POLOSKA.JPG
+[16-07-2017 19:44:36]    Loading file: /mnt/data/3DModels/Jug/PAPER_TE.JPG
+[16-07-2017 19:44:36]    Processing mesh with: 6228 vertices and 2076 trianhles
+[16-07-2017 19:44:36]    Processing mesh with: 11184 vertices and 3728 trianhles
+[16-07-2017 19:44:36]    Initializing GLFW.
+[16-07-2017 19:44:36]    GLFW initialization complete.
+[16-07-2017 19:44:36]    Creating window
+[16-07-2017 19:44:36]    Created window
+[16-07-2017 19:44:36]    Initializing GLEW.
+[16-07-2017 19:44:36]    GLEW initialization complete.
+[16-07-2017 19:44:36]    WARNING: MVP position matrix position is not strictly positive.
+[16-07-2017 19:44:36]    Loading texture uniforms: 
+[16-07-2017 19:44:37]    :colorTexture:
+[16-07-2017 19:44:37]    WARNING: MVP position matrix position is not strictly positive.
+[16-07-2017 19:44:37]    Loading texture uniforms: 
+[16-07-2017 19:44:37]    :colorTexture:
+[16-07-2017 19:44:39]    WARNING: MVP position matrix position is not strictly positive.
+[16-07-2017 19:44:39]    GPUT Cleanup complete.

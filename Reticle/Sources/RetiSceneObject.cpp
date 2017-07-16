@@ -125,8 +125,7 @@ RetiSceneObject::RetiSceneObject(const string& path)
     const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_SortByPType);
     string err(importer.GetErrorString());
     if(!scene || !(scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE) || !scene->mRootNode)
-        RetiLog::logln("ASSIMP ERROR: " + string(importer.GetErrorString()) +
-                       "Scene flags incomplete: " + ((scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE) ? "t" : "f"));
+        RetiLog::logln("ASSIMP ERROR: " + string(importer.GetErrorString()));
 
     string directory = path.substr(0, path.find_last_of(FILEPATH_SEPARATOR));
 

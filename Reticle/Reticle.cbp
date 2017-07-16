@@ -13,7 +13,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="3" />
 				<Option compiler="gcc" />
-				<Option host_application="D:/Dev/OpenGL/ProjectReticle/Tests/Test2/bin/Debug/Test1.exe" />
+				<Option host_application="/mnt/data/git-repos/ReticleLinuxTest/bin/Debug/ReticleLinuxTest" />
 				<Option run_host_application_in_terminal="1" />
 				<Option createDefFile="1" />
 				<Compiler>
@@ -42,7 +42,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-std=c++11" />
-			<Add option="-fexceptions -fPIC" />
+			<Add option="-fexceptions -fPIC -D PLATFORM_LINUX" />
 			<Add directory="Headers" />
 			<Add directory="Includes" />
 		</Compiler>
