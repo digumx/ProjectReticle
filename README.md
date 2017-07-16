@@ -40,7 +40,7 @@ offer upto 16 or more. And, currently, CPU manufactureres are pushing for more C
  
  **Building:** The Reticle project builds out of the box on linux. Just open the .cbp file in CodeBlocks and build the targets. By default, Reticle compiles to a shared object file on linux.
  
- **Linking:** To use Reticle, add tbe patb to the .so file to the linker search directory list, and link to it with -lReticle.
+ **Linking:** To use Reticle, add tbe path to the .so file to the linker search directory list, and link to it with -lReticle.
  
  ### Windows:
  
