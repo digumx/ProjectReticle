@@ -1,12 +1,15 @@
-[16-07-2017 18:51:07]    Log Opened
-[16-07-2017 18:51:07]    Loading file: /mnt/data/git-repos/ProjectReticle/Reticle/Resources/Textures/default.tga
-[16-07-2017 18:51:07]    Initializing GLFW.
-[16-07-2017 18:51:07]    GLFW initialization complete.
-[16-07-2017 18:51:07]    Creating window
-[16-07-2017 18:51:07]    Created window
-[16-07-2017 18:51:07]    Initializing GLEW.
-[16-07-2017 18:51:07]    GLEW initialization complete.
-[16-07-2017 18:51:07]    WARNING: MVP position matrix position is not strictly positive.
-[16-07-2017 18:51:07]    Loading texture uniforms: 
-[16-07-2017 18:51:07]    :colorTexture:
-[16-07-2017 18:51:07]    WARNING: MVP position matrix position is not strictly positive.
+[17-07-2017 01:16:07]    Log Opened
+[17-07-2017 01:16:07]    Loading file: /mnt/data/git-repos/ProjectReticle/Reticle/Resources/Textures/default.tga
+[17-07-2017 01:16:07]    Initializing GLFW.
+[17-07-2017 01:16:07]    GLFW initialization complete.
+[17-07-2017 01:16:07]    Creating window
+[17-07-2017 01:16:07]    Created window
+[17-07-2017 01:16:07]    Initializing GLEW.
+[17-07-2017 01:16:07]    GLEW initialization complete.
+[17-07-2017 01:16:07]    WARNING: MVP position matrix position is not strictly positive.
+[17-07-2017 01:16:07]    Loading texture uniforms: 
+[17-07-2017 01:16:07]    :colorTexture:
+[17-07-2017 01:16:07]    WARNING: MVP position matrix position is not strictly positive.
+[17-07-2017 01:16:09]    Stopping Renderer
+[17-07-2017 01:16:09]    Breaking Out.
+[17-07-2017 01:16:09]    Renderer stopped
