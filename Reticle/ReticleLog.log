@@ -1,19 +1,19 @@
-[17-07-2017 02:29:42]    Log Opened
-[17-07-2017 02:29:42]    Loading file: /mnt/data/git-repos/ProjectReticle/Reticle/Resources/Textures/default.tga
-[17-07-2017 02:29:42]    ASSIMP ERROR: 
-[17-07-2017 02:29:42]    Processing mesh with: 12732 vertices and 4244 trianhles
-[17-07-2017 02:29:42]    Initializing GLFW.
-[17-07-2017 02:29:42]    GLFW initialization complete.
-[17-07-2017 02:29:42]    Creating window
-[17-07-2017 02:29:42]    Created window
-[17-07-2017 02:29:42]    Initializing GLEW.
-[17-07-2017 02:29:42]    GLEW initialization complete.
-[17-07-2017 02:29:42]    WARNING: MVP position matrix position is not strictly positive.
-[17-07-2017 02:29:42]    Loading texture uniforms: 
-[17-07-2017 02:29:42]    :colorTexture:
-[17-07-2017 02:29:42]    WARNING: MVP position matrix position is not strictly positive.
-[17-07-2017 02:29:47]    Stopping Renderer
-[17-07-2017 02:29:47]    Breaking Out.
-[17-07-2017 02:29:47]    GPUT Cleanup complete.
-[17-07-2017 02:29:49]    Renderer stopped
-[17-07-2017 02:29:49]    Log Closed
+[17-07-2017 02:31:16]    Log Opened
+[17-07-2017 02:31:16]    Loading file: /mnt/data/git-repos/ProjectReticle/Reticle/Resources/Textures/default.tga
+[17-07-2017 02:31:16]    ASSIMP ERROR: 
+[17-07-2017 02:31:16]    Processing mesh with: 12732 vertices and 4244 trianhles
+[17-07-2017 02:31:16]    Initializing GLFW.
+[17-07-2017 02:31:16]    GLFW initialization complete.
+[17-07-2017 02:31:16]    Creating window
+[17-07-2017 02:31:16]    Created window
+[17-07-2017 02:31:16]    Initializing GLEW.
+[17-07-2017 02:31:16]    GLEW initialization complete.
+[17-07-2017 02:31:16]    WARNING: MVP position matrix position is not strictly positive.
+[17-07-2017 02:31:16]    Loading texture uniforms: 
+[17-07-2017 02:31:16]    :colorTexture:
+[17-07-2017 02:31:16]    WARNING: MVP position matrix position is not strictly positive.
+[17-07-2017 02:31:21]    Stopping Renderer
+[17-07-2017 02:31:21]    Breaking Out.
+[17-07-2017 02:31:21]    GPUT Cleanup complete.
+[17-07-2017 02:31:21]    Renderer stopped
+[17-07-2017 02:31:21]    Log Closed

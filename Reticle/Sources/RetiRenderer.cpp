@@ -397,10 +397,6 @@ void RetiRenderer::stopRenderer()
 {
     RetiLog::logln("Stopping Renderer");
     do_breakout = true;
-    #ifdef DEBUG_CODE
-    ///Basically, what I'm seeing is if giving some time to the thread to dellocate stuff fixes issue.
-    std::this_thread::sleep_for(std::chrono::seconds(2));
-    #endif // DEBUG_CODE
     gpu_thread->join();
     delete gpu_thread;
     is_window_init = false;
