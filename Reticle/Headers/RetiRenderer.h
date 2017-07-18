@@ -22,6 +22,7 @@ enum RetiRendererState
 class RetiShader;
 class RetiMesh;
 class RetiCamera;
+class RetiSceneObject;
 class RetiKeyboard;
 
 class RetiRenderer
@@ -34,10 +35,9 @@ private:
     static std::chrono::duration<long, std::milli> pause;
     static bool is_glfw_init;                  //TODO: Make Atomic
 
-    bool detach_renderer;
-
     RetiKeyboard* keyb;
 
+    bool detach_renderer;
     RetiRendererState renderer_state;
     std::atomic<bool> is_renderer_paused;
     std::atomic<bool> do_breakout;
@@ -73,6 +73,7 @@ private:
     void gput_post_renderer_cleanup();
 
 public:
+
     RetiRenderer();
     RetiRenderer(bool detach);
     RetiRenderer(const RetiRenderer& other);
@@ -86,19 +87,19 @@ public:
     const char* getFullVersionString();
 
     RetiRendererState getRedererState() const;
-    RetiKeyboard& getKeyboard();
-    RetiCamera& getCamera();
 
     void setDetachRenderer(bool detach);
-    void setWindowTitle(std::string str);
     void setWindowSize(int x, int y);
     void setClearColor(GLfloat R, GLfloat G, GLfloat B);
 
     void useCamera(RetiCamera* n_cam);
 
-    void addMesh(RetiMesh* mesh);
-    void addMesh(const float* vertCoords, const float* texCoords, const int n_verts,
-                 const unsigned int* tris, const int n_tris);
+    void addSceneObject(RetiSceneObject* mesh);
+    /*void addMesh(const float* vertCoords, const float* texCoords, const int n_verts,
+                 const unsigned int* tris, const int n_tris);*/
+
+    RetiKeyboard& getKeyboard();
+    RetiCamera& getCamera();
 
     void startRenderer();
     void stopRenderer();
