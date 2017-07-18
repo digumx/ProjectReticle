@@ -8,6 +8,5 @@
 #include <RetiShader.h>
 #include <RetiTexture.h>
 #include <RetiCamera.h>
-#include <RetiSceneObject.h>
 
 #endif // RETICLE_H_INCLUDED

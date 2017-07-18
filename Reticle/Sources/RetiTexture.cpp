@@ -14,7 +14,7 @@ bool RetiTexture::is_static_init = false;
 RetiTexture* RetiTexture::defaultTexture;
 unordered_map<string, RetiTextureData*> RetiTexture::path_to_data;
 
-void RetiTexture::load_texture_from_file(const string& path)
+void RetiTexture::load_texture_from_file(string path)
 {
     #ifdef VERBOSE_ON
     RetiLog::logln("Loading file: " + path);
@@ -46,17 +46,17 @@ RetiTexture::RetiTexture()
     load_texture_from_file(RetiRenderer::getReticleRootDirectory() + "/Resources/Textures/default.tga");
 }
 
-RetiTexture::RetiTexture(const string& path)
+RetiTexture::RetiTexture(string path)
 {
     filter_mode = RETI_TEXFLTR_LINEAR;
     mipmap_mode = RETI_MIPFLTR_NEAREST;
     wrap_s = RETI_TEXWRAP_MIRROR;
     wrap_t = RETI_TEXWRAP_MIRROR;
     texture_unit = GL_TEXTURE0;
-    load_texture_from_file(path);
+    load_texture_from_file(RetiRenderer::getReticleRootDirectory() + path);
 }
 
-RetiTexture::RetiTexture(const string& path, RetiTextureFilterMode fmode, RetiMipmapFilterMode mmode,
+RetiTexture::RetiTexture(string path, RetiTextureFilterMode fmode, RetiMipmapFilterMode mmode,
                          RetiTextureWrapMode s_w, RetiTextureWrapMode t_w, int bind_location)
 {
     filter_mode = fmode;
@@ -66,7 +66,7 @@ RetiTexture::RetiTexture(const string& path, RetiTextureFilterMode fmode, RetiMi
     texture_unit = GL_TEXTURE0 + bind_location;
     if(bind_location > 15)
         RetiLog::logln("WARNING: Support for bind locations above 15 is platform dependent.");
-    load_texture_from_file(path);
+    load_texture_from_file(RetiRenderer::getReticleRootDirectory() + path);
 }
 
 RetiTexture::RetiTexture(const RetiTexture& other)
@@ -85,17 +85,8 @@ RetiTexture::RetiTexture(const RetiTexture& other)
 
 RetiTexture& RetiTexture::operator=(const RetiTexture& other)
 {
-    filter_mode = other.filter_mode;
-    mipmap_mode = other.mipmap_mode;
-    wrap_s = other.wrap_s;
-    wrap_t = other.wrap_t;
-    if(texture_unit > 15)
-        RetiLog::logln("WARNING: Support for bind locations above 15 is platform dependent.");
-    texture_unit = other.texture_unit;
-
-    texture_struct = other.texture_struct;
-    (texture_struct->nUser)++;
-    return *this;
+    RetiTexture* ret = new RetiTexture(other);
+    return *ret;
 }
 
 RetiTexture::~RetiTexture()

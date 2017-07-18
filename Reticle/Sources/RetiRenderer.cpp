@@ -2,19 +2,15 @@
 
 #include <iostream>
 #include <ctime>
-#include <chrono>
 #include <cstring>
 #include <fstream>
-#ifdef PLATFORM_LINUX
 #include <pthread.h>
-#endif // PLATFORM_LINUX
 
 #include <RetiRenderer.h>
 #include <RetiShader.h>
 #include <RetiMesh.h>
 #include <RetiTexture.h>
 #include <RetiCamera.h>
-#include <RetiSceneObject.h>
 #include <Core/RetiLog.h>
 
 using namespace std;
@@ -93,10 +89,10 @@ RetiRenderer::RetiRenderer(const RetiRenderer& other)
 
     cam->getTransform().translateTransform(0.0, 0.0, -1.0);
 
-    objects.reserve(other.objects.size());
+    meshes.reserve(other.meshes.size());
 
-    for(int i = 0; i < other.objects.size(); i++)
-        objects.push_back(other.objects[i]);
+    for(int i = 0; i < other.meshes.size(); i++)
+        meshes.push_back(other.meshes[i]);
 
     nInstances++;
 }
@@ -116,13 +112,10 @@ RetiRenderer::~RetiRenderer()
     if(!is_cam_user)
         delete cam;
 
-    /// Nope. This is ReticleUser's responsibility.
-    /*
-    for(int i = 0; i < objects.size(); i++)
-        delete objects[i];
-    */
+    for(int i = 0; i < meshes.size(); i++)
+        delete meshes[i];
 
-    objects.clear();
+    meshes.clear();
 
     if(nInstances <= 1)
     {
@@ -135,40 +128,8 @@ RetiRenderer::~RetiRenderer()
 
 RetiRenderer& RetiRenderer::operator=(const RetiRenderer& other)
 {
-    if(renderer_state != RETI_RENDERER_STATE_INACTIVE)
-    {
-        RetiLog::logln("WARNING: Copy assignment to active renderer, ignoring operation");
-        return *this;
-    }
-
-    renderer_state = RETI_RENDERER_STATE_INACTIVE;
-
-    if(other.renderer_state != RETI_RENDERER_STATE_INACTIVE)
-        RetiLog::logln("WARNING: Copy constructing from non-inactive renderer can cause undefined behavior.");
-
-    win_x = other.win_x;
-    win_y = other.win_y;
-    title = other.title;
-    clear_color_r = other.clear_color_r;
-    clear_color_g = other.clear_color_g;
-    clear_color_b = other.clear_color_b;
-    detach_renderer = other.detach_renderer;
-    constr_init_flags();
-
-    common_shader = new RetiShader(*(other.common_shader));
-    cam = new RetiCamera(*(other.cam));
-    is_cam_user = false;
-
-    cam->getTransform().translateTransform(0.0, 0.0, -1.0);
-
-    objects.clear();
-
-    objects.reserve(other.objects.size());
-
-    for(int i = 0; i < other.objects.size(); i++)
-        objects.push_back(other.objects[i]);
-
-    return *this;
+    RetiRenderer* ret = new RetiRenderer(other);
+    return *ret;
 }
 
 const char* RetiRenderer::getFullVersionString()
@@ -218,7 +179,7 @@ void RetiRenderer::setWindowSize(int x, int y)
     RetiRenderer::win_y = y;
 }
 
-void RetiRenderer::setWindowTitle(const string& str)
+void RetiRenderer::setWindowTitle(string str)
 {
     if(renderer_state != RETI_RENDERER_STATE_INACTIVE)
     {
@@ -299,10 +260,9 @@ void RetiRenderer::init_renderer()
     this->create_window();
     this->init_glew();
     this->init_shader();
-    this->init_objects();
+    this->init_meshes();
 
     glClearColor(clear_color_r, clear_color_g, clear_color_b, 1.0f);
-    glEnable(GL_DEPTH_TEST);
 }
 
 void RetiRenderer::init_shader()
@@ -315,16 +275,16 @@ void RetiRenderer::unload_shader()
     common_shader->unloadShader();
 }
 
-void RetiRenderer::init_objects()
+void RetiRenderer::init_meshes()
 {
-    for(int i = 0; i < objects.size(); i++)
-        objects[i]->loadObject();
+    for(int i = 0; i < meshes.size(); i++)
+        meshes[i]->loadMesh();
 }
 
-void RetiRenderer::unload_objects()
+void RetiRenderer::unload_meshes()
 {
-    for(int i = 0; i < objects.size(); i++)
-        objects[i]->unloadObject();
+    for(int i = 0; i < meshes.size(); i++)
+        meshes[i]->unloadMesh();
 }
 
 void RetiRenderer::render_internal()
@@ -350,11 +310,11 @@ void RetiRenderer::render_internal()
 
         glfwPollEvents();
 
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT);
 
         common_shader->setActiveShader();
-        for(int i = 0; i < objects.size(); i++)
-            objects[i]->render(cam);
+        for(int i = 0; i < meshes.size(); i++)
+            meshes[i]->render(cam);
 
         glfwSwapBuffers(RetiRenderer::window);
     }
@@ -363,27 +323,23 @@ void RetiRenderer::render_internal()
 
 void RetiRenderer::gput_post_renderer_cleanup()
 {
-    unload_objects();
+    unload_meshes();
     unload_shader();
     //delete window;
     glfwDestroyWindow(window);
-
-    #ifdef VERBOSE_ON
-    RetiLog::logln("GPUT Cleanup complete.");
-    #endif // VERBOSE_ON
 }
 
-void RetiRenderer::addSceneObject(RetiSceneObject* obj)
+void RetiRenderer::addMesh(RetiMesh* mesh)
 {
-    objects.push_back(obj);
+    meshes.push_back(mesh);
 }
 
-/*void RetiRenderer::addMesh(const float* vertCoords, const float* texCoords, const int n_verts,
+void RetiRenderer::addMesh(const float* vertCoords, const float* texCoords, const int n_verts,
                            const unsigned int* tris, const int n_tris)
 {
     RetiMesh* mesh = new RetiMesh(vertCoords, texCoords, n_verts, tris, n_tris);
     meshes.push_back(mesh);
-}*/
+}
 
 void RetiRenderer::startRenderer()
 {
