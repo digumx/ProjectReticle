@@ -85,8 +85,18 @@ RetiShader::~RetiShader()
 
 RetiShader& RetiShader::operator=(const RetiShader& other)
 {
-    RetiShader* pCpy = new RetiShader(other);
-    return *pCpy;
+    if(is_loaded)
+    {
+        RetiLog::logln("WARNING: Copy assignment to loaded shader, ignoring call.");
+        return *this;
+    }
+
+    vertex_shader_code = new char[sizeof(other.vertex_shader_code)];
+    strcpy(vertex_shader_code, other.vertex_shader_code);
+    fragment_shader_code = new char[sizeof(other.fragment_shader_code)];
+    strcpy(fragment_shader_code, other.fragment_shader_code);
+
+    is_loaded = false;
 }
 
 void RetiShader::useVertexShader(char* vertCode)
@@ -169,7 +179,7 @@ void RetiShader::setActiveShader()
     glUseProgram(shader_program_id);
 }
 
-int RetiShader::get_uniform_location(string name)
+int RetiShader::get_uniform_location(const string& name)
 {
     if(!is_loaded)
     {

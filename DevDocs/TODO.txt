@@ -8,4 +8,6 @@ Write safe destructor for RetiSpinlock.
 Pass-return by reference check.
 Make the shader duplication prevention system more robust.
 Handle MVPs in material code.
+Optimise transform updating for parenting.
+
 

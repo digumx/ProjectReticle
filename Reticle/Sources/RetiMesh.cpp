@@ -16,7 +16,7 @@ using namespace std;
 
 RetiMesh::RetiMesh(const float* vert_coords, const float* tex_coords, const int n_verts,
                    const unsigned int* tris, const int n_tris, RetiMaterial* mat)
-                   : vertex_data_size(n_verts * 5) , triangle_size(n_tris)
+                   : vertex_data_size(n_verts * 5) , triangle_size(n_tris * 3)
 {
     material = mat;
 
@@ -41,9 +41,6 @@ RetiMesh::RetiMesh(const float* vertData, const int vSize, const unsigned int* t
                         RetiMaterial* mat)
                         : vertex_data_size(vSize) , triangle_size(tSize)
 {
-    #ifdef DEBUG_CODE
-    if(mat == nullptr) RetiLog::logln("WARNING: Null material null!");
-    #endif // DEBUG_CODE
     material = mat;
 
     vertex_data = new GLfloat[vertex_data_size];
@@ -68,11 +65,29 @@ RetiMesh::~RetiMesh()
     delete[] triangle;
 }
 
-RetiMesh& RetiMesh::operator=(const RetiMesh& other)
+/** Vertex data for this class resides in static-optimized GPU memory. To make sure
+*   that rewrites to this memory are avoided, the vertex data residing in this class is
+*   treated as immutable. To maintain that, copy assignment is deleted, use copy constructor instead.
+*/
+/*RetiMesh& RetiMesh::operator=(const RetiMesh& other)
 {
-    RetiMesh* pCpy = new RetiMesh(other);
-    return *pCpy;
-}
+    vertex_data_size = other.vertex_data_size;
+    triangle_size = other.triangle_size;
+
+    material = mat;
+
+    vertex_data = new GLfloat[vertex_data_size];
+    for(int i = 0; i < vertex_data_size; i++)
+        vertex_data[i] = other.vertex_data[i];
+
+    triangle = new GLuint[triangle_size];
+    for(int i = 0; i < triangle_size; i++)
+        triangle[i] = other.triangle[i];
+
+    is_loaded = false;
+
+    return *this;
+}*/
 
 void RetiMesh::loadMesh()
 {
@@ -100,9 +115,6 @@ void RetiMesh::loadMesh()
     //glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
-    #ifdef DEBUG_CODE
-    if(material == nullptr) RetiLog::logln("WARNING: Material null!");
-    #endif // DEBUG_CODE
     material->loadMaterial();
 
     is_loaded = true;
@@ -123,7 +135,7 @@ void RetiMesh::unloadMesh()
     is_loaded = false;
 }
 
-void RetiMesh::render(RetiCamera* cam)
+void RetiMesh::render(RetiCamera* cam, RetiTransform& transf)
 {
     if(!is_loaded)
         loadMesh();
@@ -133,9 +145,4 @@ void RetiMesh::render(RetiCamera* cam)
 
     glBindVertexArray(vao_id);
     glDrawElements(GL_TRIANGLES, triangle_size, GL_UNSIGNED_INT, 0);
-}
-
-RetiTransform& RetiMesh::getTransform()
-{
-    return transf;
 }

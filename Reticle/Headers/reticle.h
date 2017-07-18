@@ -9,5 +9,6 @@
 #include <RetiTexture.h>
 #include <RetiCamera.h>
 #include <RetiKeyboard.h>
+#include <RetiSceneObject.h>
 
 #endif // RETICLE_H_INCLUDED
