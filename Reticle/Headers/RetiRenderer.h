@@ -22,12 +22,13 @@ enum RetiRendererState
 class RetiShader;
 class RetiMesh;
 class RetiCamera;
+class RetiSceneObject;
 
 class RetiRenderer
 {
 private:
 
-    static constexpr const char* version = "0.0.7a-linux";
+    static constexpr const char* version = "0.0.7a-win-static";
     static std::string retiRoot;
     static int nInstances;                  //TODO: Make Atomic
     static std::chrono::duration<long, std::milli> pause;
@@ -54,7 +55,7 @@ private:
     GLfloat clear_color_b;
 
     RetiShader* common_shader;
-    std::vector<RetiMesh*> meshes;
+    std::vector<RetiSceneObject*> objects;
 
     void constr_init_flags();
     void init_renderer();
@@ -63,8 +64,8 @@ private:
     void create_window();
     void init_shader();
     void unload_shader();
-    void init_meshes();
-    void unload_meshes();
+    void init_objects();
+    void unload_objects();
     void render_internal();
     void gput_post_renderer_cleanup();
 
@@ -86,15 +87,15 @@ public:
 
     void setDetachRenderer(bool detach);
 
-    void setWindowTitle(std::string str);
+    void setWindowTitle(const std::string& str);
     void setWindowSize(int x, int y);
     void setClearColor(GLfloat R, GLfloat G, GLfloat B);
 
     void useCamera(RetiCamera* n_cam);
 
-    void addMesh(RetiMesh* mesh);
-    void addMesh(const float* vertCoords, const float* texCoords, const int n_verts,
-                 const unsigned int* tris, const int n_tris);
+    void addSceneObject(RetiSceneObject* mesh);
+    /*void addMesh(const float* vertCoords, const float* texCoords, const int n_verts,
+                 const unsigned int* tris, const int n_tris);*/
 
     void startRenderer();
     void stopRenderer();

@@ -31,7 +31,7 @@ private:
 
     void compile_shader(GLuint& shaderId, char* code, GLenum type);
 
-    int get_uniform_location(std::string name);
+    int get_uniform_location(const std::string& name);
     void set_uniform_int(int pos, int val);
     void set_uniform_float(int pos, float val);
 
