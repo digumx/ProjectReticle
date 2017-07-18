@@ -28,6 +28,3 @@
 
 # Logs
 *.log
-
-# Ignore reticle logs
-Reticle/ReticleLog.log
