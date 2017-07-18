@@ -98,7 +98,6 @@ public:
     /*void addMesh(const float* vertCoords, const float* texCoords, const int n_verts,
                  const unsigned int* tris, const int n_tris);*/
 
-
     void useCamera(RetiCamera* n_cam);
 
     void startRenderer();
