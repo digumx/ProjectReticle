@@ -4230,7 +4230,7 @@
 	<atomic>
 	<includes.h>
 
-1500399465 /mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Headers/includes.h
+1500403365 /mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Headers/includes.h
 	<GL/glew.h>
 	<GLFW/glfw3.h>
 	<glm/glm.hpp>
@@ -4291,15 +4291,16 @@
 	<Core/RetiSpinlock.h>
 	<Math/RetiTransform.h>
 
-1500399465 source:/mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Sources/RetiKeyboard.cpp
+1500404593 source:/mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Sources/RetiKeyboard.cpp
 	<RetiKeyboard.h>
+	<Core/RetiLog.h>
 
 1500399465 /mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Headers/RetiKeyboard.h
 	<map>
 	<includes.h>
 	<Core/RetiSpinlock.h>
 
-1500399465 source:/mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Sources/RetiMaterial.cpp
+1500403884 source:/mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Sources/RetiMaterial.cpp
 	<includes.h>
 	<fstream>
 	<RetiMaterial.h>
@@ -4308,7 +4309,7 @@
 	<RetiRenderer.h>
 	<Core/RetiLog.h>
 
-1500399465 /mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Headers/RetiMaterial.h
+1500403912 /mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Headers/RetiMaterial.h
 	<vector>
 	<unordered_map>
 	<string>
@@ -4323,7 +4324,7 @@
 	<string>
 	<includes.h>
 
-1500399465 source:/mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Sources/RetiMesh.cpp
+1500403640 source:/mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Sources/RetiMesh.cpp
 	<includes.h>
 	<iostream>
 	<RetiMesh.h>
@@ -4334,10 +4335,80 @@
 	<Core/RetiSpinlock.h>
 	<Math/RetiTransform.h>
 
-1500399465 /mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Headers/RetiMesh.h
+1500403617 /mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Headers/RetiMesh.h
 	<includes.h>
 	<vector>
 	<RetiMaterial.h>
 	<Core/RetiSpinlock.h>
 	<Math/RetiTransform.h>
+
+1500402091 source:/mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Sources/RetiRenderer.cpp
+	<includes.h>
+	<iostream>
+	<ctime>
+	<chrono>
+	<cstring>
+	<fstream>
+	<functional>
+	<pthread.h>
+	<RetiRenderer.h>
+	<RetiShader.h>
+	<RetiMesh.h>
+	<RetiTexture.h>
+	<RetiCamera.h>
+	<RetiKeyboard.h>
+	<RetiSceneObject.h>
+	<Core/RetiLog.h>
+
+1500401264 /mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Headers/RetiSceneObject.h
+	<vector>
+	<string>
+	<includes.h>
+	<assimp/Importer.hpp>
+	<assimp/scene.h>
+	<assimp/postprocess.h>
+	<Math/RetiTransform.h>
+
+1500403188 source:/mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Sources/RetiSceneObject.cpp
+	<cmath>
+	<includes.h>
+	<RetiSceneObject.h>
+	<RetiMesh.h>
+	<RetiMaterial.h>
+	<RetiTexture.h>
+	<Core/RetiLog.h>
+
+1500399465 source:/mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Sources/RetiShader.cpp
+	<includes.h>
+	<iostream>
+	<fstream>
+	<string>
+	<string.h>
+	<RetiShader.h>
+	<RetiRenderer.h>
+	<Core/RetiLog.h>
+
+1500399465 source:/mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Sources/RetiTexture.cpp
+	<includes.h>
+	<stb_image.h>
+	<includes.h>
+	<RetiRenderer.h>
+	<RetiTexture.h>
+	<Core/RetiLog.h>
+
+1500399465 /mnt/data/git-repos/merge-resolve/ProjectReticle/Reticle/Includes/stb_image.h
+	"stb_image.h"
+	<stdio.h>
+	<stdarg.h>
+	<stddef.h>
+	<stdlib.h>
+	<string.h>
+	<limits.h>
+	<math.h>
+	<stdio.h>
+	<assert.h>
+	<stdint.h>
+	<emmintrin.h>
+	<intrin.h>
+	<arm_neon.h>
 

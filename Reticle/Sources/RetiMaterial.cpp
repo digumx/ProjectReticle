@@ -96,8 +96,19 @@ RetiMaterial::RetiMaterial(const RetiMaterial& other)
 
 RetiMaterial& RetiMaterial::operator=(const RetiMaterial& other)
 {
-    RetiMaterial* ret = new RetiMaterial(other);
-    return *ret;
+    if(is_loaded)
+    {
+        RetiLog::logln("WARNING: Copy assignment to loaded shader, ignoring call.");
+        return *this;
+    }
+
+    shader = other.shader;
+    texture_name_unit = other.texture_name_unit;
+    textures = other.textures;
+
+    is_loaded = false;
+
+    return *this;
 }
 
 RetiMaterial::~RetiMaterial()
@@ -159,4 +170,9 @@ void RetiMaterial::unloadMaterial()
 RetiShader* RetiMaterial::getShader()
 {
     return shader;
+}
+
+void RetiMaterial::setTexture(const string& name, RetiTexture* tex)
+{
+    textures[texture_name_unit[name]] = tex;
 }
