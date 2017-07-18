@@ -8,5 +8,6 @@
 #include <RetiShader.h>
 #include <RetiTexture.h>
 #include <RetiCamera.h>
+#include <RetiKeyboard.h>
 
 #endif // RETICLE_H_INCLUDED

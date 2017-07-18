@@ -4,6 +4,7 @@
 #include <ctime>
 #include <cstring>
 #include <fstream>
+#include <functional>
 #include <pthread.h>
 
 #include <RetiRenderer.h>
@@ -11,6 +12,7 @@
 #include <RetiMesh.h>
 #include <RetiTexture.h>
 #include <RetiCamera.h>
+#include <RetiKeyboard.h>
 #include <Core/RetiLog.h>
 
 using namespace std;
@@ -20,13 +22,21 @@ int RetiRenderer::nInstances;
 std::chrono::duration<long, std::milli> RetiRenderer::pause(1);
 bool RetiRenderer::is_glfw_init = false;
 
-void err_callback(int err, const char* desc)
+RetiKeyboard* _callback_keyb;
+
+void _err_callback(int err, const char* desc)
 {
     RetiLog::logln("GLFW ERROR: " + string(desc));
 }
 
+void _key_callback(GLFWwindow* window, int glfw_code, int scan_code, int action, int mods)
+{
+    _callback_keyb->_glfw_key_callback(window, glfw_code, scan_code, action, mods);
+}
+
 RetiRenderer::RetiRenderer()
 {
+    /// Set flags
     renderer_state = RETI_RENDERER_STATE_INACTIVE;
     win_x = 800;
     win_y = 600;
@@ -37,10 +47,11 @@ RetiRenderer::RetiRenderer()
     detach_renderer = true;
     constr_init_flags();
 
+    /// Construct and set up members
+    keyb = new RetiKeyboard();
     common_shader = new RetiShader();
     cam = new RetiCamera(45, (win_x * 1.0) / win_y, 0.1, 1000.0);
     is_cam_user = false;
-
     cam->getTransform().translateTransform(0.0, 0.0, -1.0);
 
     nInstances++;
@@ -48,6 +59,7 @@ RetiRenderer::RetiRenderer()
 
 RetiRenderer::RetiRenderer(bool detach)
 {
+    /// Set Flags
     renderer_state = RETI_RENDERER_STATE_INACTIVE;
     win_x = 800;
     win_y = 600;
@@ -58,10 +70,11 @@ RetiRenderer::RetiRenderer(bool detach)
     detach_renderer = detach;
     constr_init_flags();
 
+    /// Construct and set up members
+    keyb = new RetiKeyboard();
     common_shader = new RetiShader();
     cam = new RetiCamera(45, (win_x * 1.0) / win_y, 0.1, 1000.0);
     is_cam_user = false;
-
     cam->getTransform().translateTransform(0.0, 0.0, -1.0);
 
     nInstances++;
@@ -74,6 +87,7 @@ RetiRenderer::RetiRenderer(const RetiRenderer& other)
     if(other.renderer_state != RETI_RENDERER_STATE_INACTIVE)
         RetiLog::logln("WARNING: Copy constructing from non-inactive renderer can cause undefined behavior.");
 
+    /// Copy flags
     win_x = other.win_x;
     win_y = other.win_y;
     title = other.title;
@@ -83,10 +97,11 @@ RetiRenderer::RetiRenderer(const RetiRenderer& other)
     detach_renderer = other.detach_renderer;
     constr_init_flags();
 
+    /// Copy-construct and set up members
+    keyb = new RetiKeyboard(*(other.keyb));
     common_shader = new RetiShader(*(other.common_shader));
     cam = new RetiCamera(*(other.cam));
     is_cam_user = false;
-
     cam->getTransform().translateTransform(0.0, 0.0, -1.0);
 
     meshes.reserve(other.meshes.size());
@@ -108,6 +123,7 @@ void RetiRenderer::constr_init_flags()
 RetiRenderer::~RetiRenderer()
 {
     delete common_shader;
+    delete keyb;
 
     if(!is_cam_user)
         delete cam;
@@ -128,8 +144,39 @@ RetiRenderer::~RetiRenderer()
 
 RetiRenderer& RetiRenderer::operator=(const RetiRenderer& other)
 {
-    RetiRenderer* ret = new RetiRenderer(other);
-    return *ret;
+    if(this->renderer_state != RETI_RENDERER_STATE_INACTIVE ||
+       other.renderer_state != RETI_RENDERER_STATE_INACTIVE)
+        RetiLog::logln("WARNING: Copy constructing from or to non-inactive renderer can cause undefined behavior.");
+
+    renderer_state = RETI_RENDERER_STATE_INACTIVE;
+
+    /// Copy flags
+    win_x = other.win_x;
+    win_y = other.win_y;
+    title = other.title;
+    clear_color_r = other.clear_color_r;
+    clear_color_g = other.clear_color_g;
+    clear_color_b = other.clear_color_b;
+    detach_renderer = other.detach_renderer;
+    constr_init_flags();
+
+    /// Delete existing members
+    delete keyb;
+    delete common_shader;
+    delete cam;
+
+    /// Copy-construct and set up members
+    keyb = new RetiKeyboard(*(other.keyb));
+    common_shader = new RetiShader(*(other.common_shader));
+    cam = new RetiCamera(*(other.cam));
+    is_cam_user = false;
+    cam->getTransform().translateTransform(0.0, 0.0, -1.0);
+
+    meshes.clear();
+    meshes.reserve(other.meshes.size());
+
+    for(int i = 0; i < other.meshes.size(); i++)
+        meshes.push_back(other.meshes[i]);
 }
 
 const char* RetiRenderer::getFullVersionString()
@@ -207,7 +254,7 @@ void RetiRenderer::init_glfw()
         return;
     RetiLog::logln("Initializing GLFW.");
     glfwInit();
-    glfwSetErrorCallback(err_callback);
+    glfwSetErrorCallback(_err_callback);
 
 
     is_glfw_init = true;
@@ -226,9 +273,11 @@ void RetiRenderer::create_window()
     glfwWindowHint(GLFW_RESIZABLE, 0);
     window = glfwCreateWindow(win_x, win_y, title.c_str(), nullptr, nullptr);
     if(window==nullptr)
-        RetiLog::logln("FAILED TO CREATE WINDOW " + to_string(win_x) + " " + to_string(win_y));
+        RetiLog::logln("FAyILED TO CREATE WINDOW " + to_string(win_x) + " " + to_string(win_y));
     glfwMakeContextCurrent(this->window);
     glfwSwapInterval(0);
+    _callback_keyb = keyb;
+    glfwSetKeyCallback(this->window, _key_callback);
     is_window_init = true;
     RetiLog::logln("Created window");
 }
@@ -376,4 +425,14 @@ void RetiRenderer::useCamera(RetiCamera* n_cam)
         delete cam;
     cam = n_cam;
     is_cam_user = true;
+}
+
+RetiKeyboard& RetiRenderer::getKeyboard()
+{
+    return *keyb;
+}
+
+RetiCamera& RetiRenderer::getCamera()
+{
+    return *cam;
 }
