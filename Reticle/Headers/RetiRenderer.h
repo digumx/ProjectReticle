@@ -23,6 +23,7 @@ class RetiShader;
 class RetiMesh;
 class RetiCamera;
 class RetiKeyboard;
+class RetiSceneObject;
 
 class RetiRenderer
 {
