@@ -38,15 +38,8 @@ RetiCamera::~RetiCamera()
 
 RetiCamera& RetiCamera::operator=(const RetiCamera& other)
 {
-    fov_y_degrees = other.fov_y_degrees;
-    aspect_ratio = other.aspect_ratio;
-    near_plane_view = other.near_plane_view;
-    far_plane_view = other.far_plane_view;
-
-    cam_transf = other.cam_transf;
-
-    reconstruct_perspective();
-    return *this;
+    RetiCamera* ncam = new RetiCamera(other);
+    return *ncam;
 }
 
 RetiTransform& RetiCamera::getTransform()

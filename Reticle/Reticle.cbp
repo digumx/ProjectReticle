@@ -13,7 +13,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="3" />
 				<Option compiler="gcc" />
-				<Option host_application="/mnt/data/git-repos/ReticleLinuxTest/bin/Debug/ReticleLinuxTest" />
+				<Option host_application="/home/digumx/Dev/OpenGL/ProjectReticle/UnitTests/RetiTest2/bin/Debug/RetiTest2" />
 				<Option run_host_application_in_terminal="1" />
 				<Option createDefFile="1" />
 				<Compiler>
@@ -42,14 +42,13 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-std=c++11" />
-			<Add option="-fexceptions -fPIC -D PLATFORM_LINUX" />
+			<Add option="-fexceptions -fPIC" />
 			<Add directory="Headers" />
 			<Add directory="Includes" />
+			<Add directory="/usr/include/libdrm" />
 		</Compiler>
 		<Linker>
-			<Add option="-lglfw -lGLEW -lGLU -lGL -lpthread -lassimp" />
-			<Add directory="/usr/include/libdrm" />
-			<Add directory="/usr/include/assimp" />
+			<Add option="-lGLEW -lGLU -lGL -lglfw -lpthread" />
 		</Linker>
 		<Unit filename="Headers/Core/RetiLog.h" />
 		<Unit filename="Headers/Core/RetiSpinlock.h" />
@@ -58,7 +57,6 @@
 		<Unit filename="Headers/RetiMaterial.h" />
 		<Unit filename="Headers/RetiMesh.h" />
 		<Unit filename="Headers/RetiRenderer.h" />
-		<Unit filename="Headers/RetiSceneObject.h" />
 		<Unit filename="Headers/RetiShader.h" />
 		<Unit filename="Headers/RetiTexture.h" />
 		<Unit filename="Headers/includes.h" />
@@ -223,7 +221,6 @@
 		<Unit filename="Sources/RetiMaterial.cpp" />
 		<Unit filename="Sources/RetiMesh.cpp" />
 		<Unit filename="Sources/RetiRenderer.cpp" />
-		<Unit filename="Sources/RetiSceneObject.cpp" />
 		<Unit filename="Sources/RetiShader.cpp" />
 		<Unit filename="Sources/RetiTexture.cpp" />
 		<Extensions>
