@@ -110,6 +110,24 @@ void RetiShader::loadShader()
     compile_shader(vertex_shader_id, vertex_shader_code, GL_VERTEX_SHADER);
     compile_shader(fragment_shader_id, fragment_shader_code, GL_FRAGMENT_SHADER);
 
+    GLint vertexCompileStatus;
+    glGetShaderiv(vertex_shader_id, GL_COMPILE_STATUS, &vertexCompileStatus);
+    if(vertexCompileStatus != GL_TRUE)
+    {
+        char log[65536];
+        glGetShaderInfoLog(vertex_shader_id, 65536, NULL, log);
+        RetiLog::logln("VERTEX SHADER COMPILE ERROR: \n" + string(log));
+    }
+
+    GLint fragmentCompileStatus;
+    glGetShaderiv(fragment_shader_id, GL_COMPILE_STATUS, &fragmentCompileStatus);
+    if(fragmentCompileStatus != GL_TRUE)
+    {
+        char log[65536];
+        glGetShaderInfoLog(fragment_shader_id, 65536, NULL, log);
+        RetiLog::logln("FRAGMENT SHADER COMPILE ERROR: \n" + string(log));
+    }
+
     shader_program_id = glCreateProgram();
     glAttachShader(shader_program_id, vertex_shader_id);
     glAttachShader(shader_program_id, fragment_shader_id);
@@ -119,12 +137,12 @@ void RetiShader::loadShader()
     glGetProgramiv(shader_program_id, GL_LINK_STATUS, &linkStatus);
     if(linkStatus != GL_TRUE)
     {
-        char* log = new char[65536];
+        char log[65536];
         glGetProgramInfoLog(shader_program_id, 65536, NULL, log);
         RetiLog::logln("SHADER LINK ERROR: " + string(log));
     }
 
-    mvp_pos = glGetUniformLocation(shader_program_id, RETI_UNAME_MVP);
+    mvp_pos = glGetUniformLocation(shader_program_id, "mvp_matrix");
     if(mvp_pos <= 0)
         RetiLog::logln("WARNING: MVP position matrix position is not strictly positive.");
 

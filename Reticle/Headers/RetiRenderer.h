@@ -22,6 +22,7 @@ enum RetiRendererState
 class RetiShader;
 class RetiMesh;
 class RetiCamera;
+class RetiKeyboard;
 
 class RetiRenderer
 {
@@ -34,6 +35,9 @@ private:
     static bool is_glfw_init;                  //TODO: Make Atomic
 
     bool detach_renderer;
+
+    RetiKeyboard* keyb;
+
     RetiRendererState renderer_state;
     std::atomic<bool> is_renderer_paused;
     std::atomic<bool> do_breakout;
@@ -69,7 +73,6 @@ private:
     void gput_post_renderer_cleanup();
 
 public:
-
     RetiRenderer();
     RetiRenderer(bool detach);
     RetiRenderer(const RetiRenderer& other);
@@ -83,9 +86,10 @@ public:
     const char* getFullVersionString();
 
     RetiRendererState getRedererState() const;
+    RetiKeyboard& getKeyboard();
+    RetiCamera& getCamera();
 
     void setDetachRenderer(bool detach);
-
     void setWindowTitle(std::string str);
     void setWindowSize(int x, int y);
     void setClearColor(GLfloat R, GLfloat G, GLfloat B);
