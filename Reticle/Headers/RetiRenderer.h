@@ -58,7 +58,7 @@ private:
     GLfloat clear_color_b;
 
     RetiShader* common_shader;
-    std::vector<RetiMesh*> meshes;
+    std::vector<RetiSceneObject*> objects;
 
     void constr_init_flags();
     void init_renderer();
@@ -67,8 +67,8 @@ private:
     void create_window();
     void init_shader();
     void unload_shader();
-    void init_meshes();
-    void unload_meshes();
+    void init_objects();
+    void unload_objects();
     void render_internal();
     void gput_post_renderer_cleanup();
 
@@ -90,6 +90,7 @@ public:
 
     void setDetachRenderer(bool detach);
     void setWindowSize(int x, int y);
+    void setWindowTitle(const std::string& str);
     void setClearColor(GLfloat R, GLfloat G, GLfloat B);
 
     void useCamera(RetiCamera* n_cam);

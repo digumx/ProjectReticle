@@ -111,10 +111,10 @@ RetiRenderer::RetiRenderer(const RetiRenderer& other)
 
     cam->getTransform().translateTransform(0.0, 0.0, -1.0);
 
-    meshes.reserve(other.meshes.size());
+    objects.reserve(other.objects.size());
 
-    for(int i = 0; i < other.meshes.size(); i++)
-        meshes.push_back(other.meshes[i]);
+    for(int i = 0; i < other.objects.size(); i++)
+        objects.push_back(other.objects[i]);
 
     nInstances++;
 }
@@ -141,7 +141,7 @@ RetiRenderer::~RetiRenderer()
         delete objects[i];
     */
 
-    meshes.clear();
+    objects.clear();
 
     if(nInstances <= 1)
     {
@@ -169,7 +169,7 @@ RetiRenderer& RetiRenderer::operator=(const RetiRenderer& other)
     clear_color_b = other.clear_color_b;
     detach_renderer = other.detach_renderer;
     constr_init_flags();
-    
+
     //Delete existing members
     delete keyb;
     delete common_shader;

@@ -58,6 +58,7 @@
 		<Unit filename="Headers/RetiMaterial.h" />
 		<Unit filename="Headers/RetiMesh.h" />
 		<Unit filename="Headers/RetiRenderer.h" />
+		<Unit filename="Headers/RetiSceneObject.h" />
 		<Unit filename="Headers/RetiShader.h" />
 		<Unit filename="Headers/RetiTexture.h" />
 		<Unit filename="Headers/includes.h" />
