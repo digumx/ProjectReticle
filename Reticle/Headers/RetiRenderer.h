@@ -96,10 +96,6 @@ public:
 
     void useCamera(RetiCamera* n_cam);
 
-    void addMesh(RetiMesh* mesh);
-    void addMesh(const float* vertCoords, const float* texCoords, const int n_verts,
-                 const unsigned int* tris, const int n_tris);
-
     void startRenderer();
     void stopRenderer();
     void pauseRenderer();
