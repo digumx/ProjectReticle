@@ -23,6 +23,7 @@ class RetiShader;
 class RetiMesh;
 class RetiCamera;
 class RetiSceneObject;
+class RetiKeyboard;
 
 class RetiRenderer
 {
@@ -33,6 +34,8 @@ private:
     static int nInstances;                  //TODO: Make Atomic
     static std::chrono::duration<long, std::milli> pause;
     static bool is_glfw_init;                  //TODO: Make Atomic
+
+    RetiKeyboard* keyb;
 
     bool detach_renderer;
     RetiRendererState renderer_state;
@@ -96,6 +99,9 @@ public:
     void addSceneObject(RetiSceneObject* mesh);
     /*void addMesh(const float* vertCoords, const float* texCoords, const int n_verts,
                  const unsigned int* tris, const int n_tris);*/
+
+    RetiKeyboard& getKeyboard();
+    RetiCamera& getCamera();
 
     void startRenderer();
     void stopRenderer();
