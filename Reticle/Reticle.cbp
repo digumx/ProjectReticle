@@ -53,6 +53,7 @@
 		</Linker>
 		<Unit filename="Headers/Core/RetiLog.h" />
 		<Unit filename="Headers/Core/RetiSpinlock.h" />
+		<Unit filename="Headers/Math/RetiCameraTransform.h" />
 		<Unit filename="Headers/Math/RetiTransform.h" />
 		<Unit filename="Headers/RetiCamera.h" />
 		<Unit filename="Headers/RetiKeyboard.h" />
@@ -219,6 +220,7 @@
 		<Unit filename="Shaders/Default_v.shdr" />
 		<Unit filename="Sources/Core/RetiLog.cpp" />
 		<Unit filename="Sources/Core/RetiSpinlock.cpp" />
+		<Unit filename="Sources/Math/RetiCameraTransform.cpp" />
 		<Unit filename="Sources/Math/RetiTransform.cpp" />
 		<Unit filename="Sources/RetiCamera.cpp" />
 		<Unit filename="Sources/RetiKeyboard.cpp" />

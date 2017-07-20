@@ -9,6 +9,9 @@ using namespace std;
 
 inline void RetiCameraTransform::reconstruct_transform()
 {
+    #ifdef DEBUG_CODE
+    RetiLog::logln("Reconstructing Camera Transform");
+    #endif // DEBUG_CODE
     transform_m = parent->transform_m * rotate_m * translate_m;
     lock.release();
     for(children_iterator i = children.begin(); i != children.end(); i++)
@@ -55,12 +58,16 @@ RetiCameraTransform& RetiCameraTransform::operator=(const RetiCameraTransform& o
 
 void RetiCameraTransform::translateTransform(float x, float y, float z)
 {
-    RetiTransform::translateTransform(-x, -y, -z);
+    lock.acquire();
+    translate_m = glm::translate(translate_m, glm::vec3(-x, -y, -z));
+    reconstruct_transform();
 }
 
 void RetiCameraTransform::rotateTransform(float rad, float x, float y, float z)
 {
-    RetiTransform::rotateTransform(-rad, x, y, z);
+    lock.acquire();
+    rotate_m = glm::rotate(rotate_m, -rad, glm::vec3(x, y, z));
+    reconstruct_transform();
 }
 
 void RetiCameraTransform::scaleTransform(float x, float y, float z)
