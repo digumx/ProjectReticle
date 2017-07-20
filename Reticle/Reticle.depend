@@ -5560,7 +5560,7 @@
 	<atomic>
 	<includes.h>
 
-1500555694 /mnt/data/Dev/git-reticle/ProjectReticle/Reticle/Headers/includes.h
+1500573904 /mnt/data/Dev/git-reticle/ProjectReticle/Reticle/Headers/includes.h
 	<GL/glew.h>
 	<GLFW/glfw3.h>
 	<glm/glm.hpp>
@@ -5606,7 +5606,7 @@
 	<Math/RetiTransform.h>
 	<Core/RetiLog.h>
 
-1500562984 /mnt/data/Dev/git-reticle/ProjectReticle/Reticle/Headers/Math/RetiTransform.h
+1500572877 /mnt/data/Dev/git-reticle/ProjectReticle/Reticle/Headers/Math/RetiTransform.h
 	<map>
 	<includes.h>
 	<Core/RetiSpinlock.h>
@@ -5741,12 +5741,11 @@
 	<intrin.h>
 	<arm_neon.h>
 
-1500562994 source:/mnt/data/Dev/git-reticle/ProjectReticle/Reticle/Sources/Math/RetiCameraTransform.cpp
+1500573947 source:/mnt/data/Dev/git-reticle/ProjectReticle/Reticle/Sources/Math/RetiCameraTransform.cpp
 	<includes.h>
 	<Core/RetiLog.h>
-	<Math/RetiTransform.h>
 	<Math/RetiCameraTransform.h>
 
-1500561911 /mnt/data/Dev/git-reticle/ProjectReticle/Reticle/Headers/Math/RetiCameraTransform.h
+1500573461 /mnt/data/Dev/git-reticle/ProjectReticle/Reticle/Headers/Math/RetiCameraTransform.h
 	<Math/RetiTransform.h>
 

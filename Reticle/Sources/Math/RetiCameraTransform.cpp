@@ -76,3 +76,28 @@ void RetiCameraTransform::scaleTransform(float x, float y, float z)
     RetiLog::logln("WARNING: Scale called on RetiCameraTransform, call ignored");
     #endif // VERBOSE_ON
 }
+
+void RetiCameraTransform::scaleTransformLocal(float x, float y, float z)
+{
+    #ifdef VERBOSE_ON
+    RetiLog::logln("WARNING: Scale called on RetiCameraTransform, call ignored");
+    #endif // VERBOSE_ON
+}
+
+void RetiCameraTransform::translateTransformLocal(float x, float y, float z)
+{
+    lock.acquire();
+    glm::mat4 rotm = glm::inverse(rotate_m);
+    glm::vec3 vectr = (rotm * glm::vec4(-x, -y, -z, 0)).xyz;
+    translate_m = glm::translate(translate_m, vectr);
+    reconstruct_transform();
+}
+
+void RetiCameraTransform::rotateTransformLocal(float rad, float x, float y, float z)
+{
+    lock.acquire();
+    glm::mat4 rotm = glm::inverse(rotate_m);
+    glm::vec3 vectr = (rotm * glm::vec4(x, y, z, 0)).xyz;
+    rotate_m = glm::rotate(rotate_m, -rad, vectr);
+    reconstruct_transform();
+}

@@ -19,6 +19,9 @@ public:
     void scaleTransform(float x, float y, float z);
     void rotateTransform(float rad, float x, float y, float z);
     void translateTransform(float x, float y, float z);
+    void scaleTransformLocal(float x, float y, float z);
+    void rotateTransformLocal(float rad, float x, float y, float z);
+    void translateTransformLocal(float x, float y, float z);
 };
 
 #endif // RETICAMERATRANSFORM_H_INCLUDED

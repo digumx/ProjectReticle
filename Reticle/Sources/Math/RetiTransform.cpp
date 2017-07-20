@@ -96,6 +96,30 @@ void RetiTransform::rotateTransform(float rad, float x, float y, float z)
     reconstruct_transform();
 }
 
+void RetiTransform::scaleTransformLocal(float x, float y, float z)
+{
+    lock.acquire();
+    glm::vec3 vectr = (rotate_m * glm::vec4(x, y, z, 0)).xyz;
+    scale_m = glm::scale(scale_m, vectr);
+    reconstruct_transform();
+}
+
+void RetiTransform::translateTransformLocal(float x, float y, float z)
+{
+    lock.acquire();
+    glm::vec3 vectr = (rotate_m * glm::vec4(x, y, z, 0)).xyz;
+    translate_m = glm::translate(translate_m, vectr);
+    reconstruct_transform();
+}
+
+void RetiTransform::rotateTransformLocal(float rad, float x, float y, float z)
+{
+    lock.acquire();
+    glm::vec3 vectr = (rotate_m * glm::vec4(x, y, z, 0)).xyz;
+    rotate_m = glm::rotate(rotate_m, rad, vectr);
+    reconstruct_transform();
+}
+
 RetiTransform& RetiTransform::getParent()
 {
     return *parent;

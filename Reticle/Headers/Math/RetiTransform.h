@@ -40,9 +40,20 @@ public:
 
     RetiTransform& getParent();
 
+    /** Scale, translate and rotate operations. All vector axes are in World space.
+    *   Note that rotation axis in rotateTransform() is NOT normalized.
+    */
     void scaleTransform(float x, float y, float z);
     void rotateTransform(float rad, float x, float y, float z);
     void translateTransform(float x, float y, float z);
+    /** Same as before, except now vector axes are oriented with respect to local space.
+    *   Note that this does not mean the vectors are in local space, only that the rotation
+    *   component is with respect to local coordinate axes. This is basically as if only rotation
+    *   has been applied to the vectors, and not translation or scaling.
+    */
+    void scaleTransformLocal(float x, float y, float z);
+    void rotateTransformLocal(float rad, float x, float y, float z);
+    void translateTransformLocal(float x, float y, float z);
 
     void setParent(RetiTransform& p);
     void detach();
