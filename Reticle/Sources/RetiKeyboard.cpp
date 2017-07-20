@@ -31,6 +31,7 @@ RetiKeyboard& RetiKeyboard::operator=(const RetiKeyboard& other)
         i != other.listened_key_pressed.end(); i++)
             this->listened_key_pressed[i->first] = i->second;
     map_lock.release();
+    return *this;
 }
 
 void RetiKeyboard::_glfw_key_callback(GLFWwindow* window, int glfw_code, int scan_code, int action, int mods)
