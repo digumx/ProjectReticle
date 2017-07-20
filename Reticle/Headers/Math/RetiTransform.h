@@ -46,6 +46,7 @@ public:
     void scaleTransform(float x, float y, float z);
     void rotateTransform(float rad, float x, float y, float z);
     void translateTransform(float x, float y, float z);
+
     /** Same as before, except now vector axes are oriented with respect to local space.
     *   Note that this does not mean the vectors are in local space, only that the rotation
     *   component is with respect to local coordinate axes. This is basically as if only rotation

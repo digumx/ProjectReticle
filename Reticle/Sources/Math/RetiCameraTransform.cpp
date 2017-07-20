@@ -88,7 +88,7 @@ void RetiCameraTransform::translateTransformLocal(float x, float y, float z)
 {
     lock.acquire();
     glm::mat4 rotm = glm::inverse(rotate_m);
-    glm::vec3 vectr = (rotm * glm::vec4(-x, -y, -z, 0)).xyz;
+    glm::vec3 vectr(rotm * glm::vec4(-x, -y, -z, 0));
     translate_m = glm::translate(translate_m, vectr);
     reconstruct_transform();
 }
@@ -97,7 +97,7 @@ void RetiCameraTransform::rotateTransformLocal(float rad, float x, float y, floa
 {
     lock.acquire();
     glm::mat4 rotm = glm::inverse(rotate_m);
-    glm::vec3 vectr = (rotm * glm::vec4(x, y, z, 0)).xyz;
+    glm::vec3 vectr(rotm * glm::vec4(x, y, z, 0));
     rotate_m = glm::rotate(rotate_m, -rad, vectr);
     reconstruct_transform();
 }
