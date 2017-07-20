@@ -5611,10 +5611,9 @@
 	<includes.h>
 	<Core/RetiSpinlock.h>
 
-1500555694 source:/mnt/data/Dev/git-reticle/ProjectReticle/Reticle/Sources/RetiCamera.cpp
+1500563243 source:/mnt/data/Dev/git-reticle/ProjectReticle/Reticle/Sources/RetiCamera.cpp
 	<includes.h>
 	<RetiCamera.h>
-	<Math/RetiTransform.h>
 
 1500563248 /mnt/data/Dev/git-reticle/ProjectReticle/Reticle/Headers/RetiCamera.h
 	<includes.h>
