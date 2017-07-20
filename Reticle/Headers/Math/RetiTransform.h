@@ -9,7 +9,9 @@
 
 class RetiTransform
 {
-protected:
+private:
+
+    friend class RetiCameraTransform;
 
     static RetiTransform global_parent;
 

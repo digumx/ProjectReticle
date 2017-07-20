@@ -1,7 +1,6 @@
 #include <includes.h>
 
 #include <RetiCamera.h>
-#include <Math/RetiTransform.h>
 
 using namespace std;
 
@@ -42,7 +41,7 @@ RetiCamera& RetiCamera::operator=(const RetiCamera& other)
     return *ncam;
 }
 
-RetiTransform& RetiCamera::getTransform()
+RetiCameraTransform& RetiCamera::getTransform()
 {
     return cam_transf;
 }

@@ -4,13 +4,13 @@
 #include <includes.h>
 
 #include <Core/RetiSpinlock.h>
-#include <Math/RetiTransform.h>
+#include <Math/RetiCameraTransform.h>
 
 class RetiCamera
 {
 private:
 
-    RetiTransform cam_transf;
+    RetiCameraTransform cam_transf;
 
     float aspect_ratio;
     float near_plane_view;
@@ -30,7 +30,7 @@ public:
     ~RetiCamera();
     RetiCamera& operator=(const RetiCamera& other);
 
-    RetiTransform& getTransform();
+    RetiCameraTransform& getTransform();
 
     void setNearPlane(float npv);
     void setFarPlane(float fpv);
