@@ -67,13 +67,13 @@ private:
 
     void translate_params_to_gpu();
     void load_params();
-    void load_texture_from_file(const std::string&);
+    void load_texture_from_file(std::string);
 
 public:
 
     RetiTexture();
-    RetiTexture(const std::string&);
-    RetiTexture(const std::string&, RetiTextureFilterMode, RetiMipmapFilterMode, RetiTextureWrapMode, RetiTextureWrapMode, int);
+    RetiTexture(std::string);
+    RetiTexture(std::string, RetiTextureFilterMode, RetiMipmapFilterMode, RetiTextureWrapMode, RetiTextureWrapMode, int);
     RetiTexture(const RetiTexture&);
     ~RetiTexture();
     RetiTexture& operator=(const RetiTexture&);

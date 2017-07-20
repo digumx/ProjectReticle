@@ -3,8 +3,8 @@
 
 #define DEBUG_CODE
 #define VERBOSE_ON
-//#define PLATFORM_WINDOWS
 //#define PLATFORM_LINUX
+//#define PLATFORM_WINDOWS
 
 #define GLEW_NO_GLU
 #ifdef PLATFORM_WINDOWS
@@ -24,7 +24,6 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include <glm/gtx/string_cast.hpp>
 #define STB_IMAGE_IMPLEMENTATION
 
 #endif // INCLUDES_H_INCLUDED

@@ -29,7 +29,7 @@ class RetiRenderer
 {
 private:
 
-    static constexpr const char* version = "0.0.7a-win-static";
+    static constexpr const char* version = "0.0.7a-linux";
     static std::string retiRoot;
     static int nInstances;                  //TODO: Make Atomic
     static std::chrono::duration<long, std::milli> pause;
@@ -89,9 +89,8 @@ public:
     RetiRendererState getRedererState() const;
 
     void setDetachRenderer(bool detach);
-
-    void setWindowTitle(const std::string& str);
     void setWindowSize(int x, int y);
+    void setWindowTitle(const std::string& str);
     void setClearColor(GLfloat R, GLfloat G, GLfloat B);
 
     void useCamera(RetiCamera* n_cam);

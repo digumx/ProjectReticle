@@ -45,11 +45,11 @@
 			<Add option="-fexceptions -fPIC -D PLATFORM_LINUX" />
 			<Add directory="Headers" />
 			<Add directory="Includes" />
-		</Compiler>
-		<Linker>
-			<Add option="-lglfw -lGLEW -lGLU -lGL -lpthread -lassimp" />
 			<Add directory="/usr/include/libdrm" />
 			<Add directory="/usr/include/assimp" />
+		</Compiler>
+		<Linker>
+			<Add option="-lGLEW -lGLU -lGL -lglfw -lpthread -lassimp" />
 		</Linker>
 		<Unit filename="Headers/Core/RetiLog.h" />
 		<Unit filename="Headers/Core/RetiSpinlock.h" />

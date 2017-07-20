@@ -169,7 +169,7 @@ RetiRenderer& RetiRenderer::operator=(const RetiRenderer& other)
     clear_color_b = other.clear_color_b;
     detach_renderer = other.detach_renderer;
     constr_init_flags();
-    
+
     //Delete existing members
     delete keyb;
     delete common_shader;
