@@ -9,7 +9,7 @@
 
 class RetiTransform
 {
-private:
+protected:
 
     static RetiTransform global_parent;
 
