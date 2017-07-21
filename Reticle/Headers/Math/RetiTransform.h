@@ -38,9 +38,20 @@ public:
 
     RetiTransform& getParent();
 
+    /// In the following functions, all axes / vectors are in global space
     void scaleTransform(float x, float y, float z);
     void rotateTransform(float rad, float x, float y, float z);
     void translateTransform(float x, float y, float z);
+
+    /** In the following functions, all axes / vectors are locally oriented.
+    *   This is distinct from being in local space, and implies that translational
+    *   and scaling differences between local space and global space are ignored.
+    *   Thus, if the object has been rotated by pi/2 along global Z, and scaled by
+    *   a factor of 5 along all axis, calling the following translate function with
+    *   (0, 1, 0) would be equivalent to moving -1 (as opposed to -5) along negative X. */
+    void scaleTransformLocal(float x, float y, float z);
+    void rotateTransformLocal(float rad, float x, float y, float z);
+    void translateTransformLocal(float x, float y, float z);
 
     void setParent(RetiTransform& p);
     void detach();
