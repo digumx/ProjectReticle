@@ -49,7 +49,7 @@ RetiTransform& RetiCamera::getTransform()
 
 glm::mat4 RetiCamera::getMVP(glm::mat4 m_mat)
 {
-    glm::mat4 v = cam_transf.getTransformMatrix();
+    glm::mat4 v = glm::inverse(cam_transf.getTransformMatrix());
     p_lock.acquire();
     glm::mat4 mvp = projection_t * v * m_mat;
     p_lock.release();
