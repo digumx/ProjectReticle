@@ -12,7 +12,8 @@ inline void RetiCameraTransform::reconstruct_transform()
     #ifdef DEBUG_CODE
     RetiLog::logln("Reconstructing Camera Transform");
     #endif // DEBUG_CODE
-    transform_m = parent->transform_m * rotate_m * translate_m;
+    glm::mat4 itransf = glm::inverse(parent->transform_m);
+    transform_m = rotate_m * translate_m * itransf;
     lock.release();
     for(children_iterator i = children.begin(); i != children.end(); i++)
     {
