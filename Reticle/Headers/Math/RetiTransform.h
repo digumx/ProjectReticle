@@ -27,7 +27,7 @@ private:
 
     RetiSpinlock lock;
 
-    void reconstruct_transform();
+    virtual void reconstruct_transform();
 
 public:
 

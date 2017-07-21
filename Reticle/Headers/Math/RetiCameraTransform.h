@@ -7,7 +7,7 @@ class RetiCameraTransform : public RetiTransform
 {
 protected:
 
-    void reconstruct_transform();
+    virtual void reconstruct_transform();
 
 public:
 
