@@ -57,6 +57,9 @@ public:
 */
     RetiMesh& operator=(const RetiMesh &) = delete;
 
+    RetiMaterial& getMaterial();
+    void useMaterial(RetiMaterial* mat);
+
     // Initialize OpenGL
     void loadMesh();
     void unloadMesh();

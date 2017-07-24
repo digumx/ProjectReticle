@@ -146,3 +146,13 @@ void RetiMesh::render(RetiCamera* cam, RetiTransform& transf)
     glBindVertexArray(vao_id);
     glDrawElements(GL_TRIANGLES, triangle_size, GL_UNSIGNED_INT, 0);
 }
+
+RetiMaterial& RetiMesh::getMaterial()
+{
+    return *material;
+}
+
+void RetiMesh::useMaterial(RetiMaterial* mat)
+{
+    material = mat;
+}
