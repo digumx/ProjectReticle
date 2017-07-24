@@ -217,6 +217,9 @@
 		<Unit filename="Shaders/Default.shif" />
 		<Unit filename="Shaders/Default_f.shdr" />
 		<Unit filename="Shaders/Default_v.shdr" />
+		<Unit filename="Shaders/NondirectionalDeffered.shif" />
+		<Unit filename="Shaders/NondirectionalForward_f.shdr" />
+		<Unit filename="Shaders/NondirectionalForward_v.shdr" />
 		<Unit filename="Sources/Core/RetiLog.cpp" />
 		<Unit filename="Sources/Core/RetiSpinlock.cpp" />
 		<Unit filename="Sources/Math/RetiTransform.cpp" />

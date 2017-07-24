@@ -1,0 +1,14 @@
+#version 330 core
+
+uniform mat4 mvp_matrix;
+
+layout (location = 0) in vec3 vertPos;
+layout (location = 1) in vec2 texCoords;
+
+out vec2 uv_main;
+
+void main()
+{
+    uv_main = texCoords;
+	gl_Position = mvp_matrix * vec4(vertPos, 1.0);
+}
