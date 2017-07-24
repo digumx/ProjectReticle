@@ -80,6 +80,9 @@ public:
 
     RetiTransform& getTransform();
     RetiTransform& getMeshTransform(int id);
+    RetiMesh& getMesh(int id);
+    int getNumMeshes();
+    std::vector<RetiMesh*>& getMeshes();
 
     int addMesh(RetiMesh* msh, RetiTransform& trf = RetiTransform::getIdentity());
     void deleteMesh(int id);

@@ -267,3 +267,22 @@ void RetiSceneObject::render(RetiCamera* cam)
     for(int i = 0; i < meshes.size(); i++)
         meshes[i].mesh->render(cam, meshes[i].transf);
 }
+
+RetiMesh& RetiSceneObject::getMesh(int id)
+{
+    return *(meshes[id].mesh);
+}
+
+int RetiSceneObject::getNumMeshes()
+{
+    return meshes.size();
+}
+
+vector<RetiMesh*>& RetiSceneObject::getMeshes()
+{
+    vector<RetiMesh*>* vectr = new vector<RetiMesh*>();
+    vectr->reserve(meshes.size());
+    for(int i = 0; i < meshes.size(); i++)
+        vectr->push_back(meshes[i].mesh);
+    return *vectr;
+}
