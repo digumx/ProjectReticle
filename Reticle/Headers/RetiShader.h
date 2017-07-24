@@ -8,6 +8,8 @@
 
 #include <includes.h>
 
+/// A SECTION OF DEFINES THAT SPECIFIES INTERNAL RETICLE STUFF....
+
 #define RETI_UNAME_MVP "mvp_matrix"
 
 class RetiRenderer;

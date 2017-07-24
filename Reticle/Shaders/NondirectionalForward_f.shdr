@@ -3,10 +3,19 @@
 uniform sampler2D colorTexture;
 
 in vec2 uv_main;
+in vec3 light_pos;
 
 out vec4 color;
 
+float calcAtten(vec3 lp, float kl, float kq)
+{
+    float d2 = dot(lp, lp);
+    float d = sqrt(d2);
+    return 1.0 / (1.0 + kl*d + kq*d2);
+}
+
 void main()
 {
-	color = texture(colorTexture, uv_main);
+    float atten = calcAtten(light_pos, 0.22, 0.20);     //For 20m Distance
+	color = atten * vec4(1.0, 0.66, 0.02, 1.0) * texture(colorTexture, uv_main);
 }

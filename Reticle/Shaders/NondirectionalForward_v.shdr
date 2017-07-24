@@ -6,9 +6,11 @@ layout (location = 0) in vec3 vertPos;
 layout (location = 1) in vec2 texCoords;
 
 out vec2 uv_main;
+out vec3 light_pos;
 
 void main()
 {
     uv_main = texCoords;
 	gl_Position = mvp_matrix * vec4(vertPos, 1.0);
+    light_pos = vec3(2, 2, 2) - vertPos;
 }
