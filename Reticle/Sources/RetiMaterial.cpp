@@ -37,7 +37,7 @@ void RetiMaterial::initialize_from_paths(const string& vertPath, const string& f
     }
 }
 
-RetiMaterial::RetiMaterial() : RetiMaterial(RetiRenderer::getReticleRootDirectory() + "/Shaders/Default.shif") {}
+RetiMaterial::RetiMaterial() : RetiMaterial(RetiRenderer::getReticleRootDirectory() + RETI_DEFAULT_SHIF) {}
 
 RetiMaterial::RetiMaterial(const string& filePath)
 {

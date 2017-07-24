@@ -1,6 +1,9 @@
 #ifndef RETIMATERIAL_H_INCLUDED
 #define RETIMATERIAL_H_INCLUDED
 
+/// The default shader-set to use
+#define RETI_DEFAULT_SHIF "/Shaders/NondirectionalForward.shif"
+
 #include <vector>
 #include <unordered_map>
 #include <string>
