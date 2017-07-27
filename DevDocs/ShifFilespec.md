@@ -5,7 +5,7 @@ Shader Interface files specify how a number of parts and snippets of glsl code, 
 
 ## Basic seperator syntax:
 
- -  Curly braces (`{}`) are used to specify sections. Names of sections come before the opening bracket.
+ -  Curly braces (`{}`) are used to specify sections. Names of sections come before the opening bracket, enclosed in round brackets (`()`).
  -  Box brackets (`[]`) are used to specify alternative lists. Each item in the list is a comma-seperated list of items following syntax `<name> : <value>`.
  -  Attributes within sections can be ordered or unordered lists using the syntax `<name> = <value>;`or the syntax `<name>;`. Attribute definitions end with semicolons.
  -  Strings are enclosed in double quotes (`""`).
@@ -27,3 +27,7 @@ This section contains details regarding the lighitng model and pipeline the shad
  -  Name `PassLightColor`. Possible values: `0` or `1`. If `1`, it indicates that light color (strength multiplied) must be passed to the shader through `vec3 lights[i].color`.
  -  Name `PassKl`. Possible values: `0` or `1`. If `1`, indicates that Kl values must be passed through `float lights[i].kl`.
  -  Name `PassKp`. Possible values: `0` or `1`. If `1`, idnicates that Kq values must be passed through `float lights[i].kq`.
+
+### Section TexLists:
+
+List of texture uniform names, seperated by semicolons.
