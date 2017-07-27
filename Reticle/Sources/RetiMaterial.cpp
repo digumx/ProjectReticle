@@ -1,6 +1,7 @@
 #include <includes.h>
 
 #include <fstream>
+#include <map>
 
 #include <RetiMaterial.h>
 #include <RetiTexture.h>
@@ -11,6 +12,47 @@
 using namespace std;
 
 unordered_map<string, RetiShader*> RetiMaterial::path_to_shader;
+
+/// These are some utility functions unrelated to the RetiMaterial, but related to .shif files.
+
+void load_file_to_string(string& str, ifstream& file)
+{
+    str = "";
+    string ln;
+    if(!file.is_open()) return;
+    getline(file, ln);
+    while(getline(file, ln)) str = str + ln;
+    return;
+}
+
+string substr_by_char(char bch, char ech, size_t& start, const string& str)
+{
+    size_t bpos;
+    if((bpos = str.find_first_of(bch, start)) == string::npos)
+    {
+        RetiLog::logln("Expected " + to_string(bch) + "After" + to_string(start));
+        return "";
+    }
+    size_t epos;
+    if((bpos = str.find_first_of(bch, bpos)) == string::npos)
+    {
+        RetiLog::logln("Unmatched " + to_string(bch) + "At" + to_string(bpos)));
+        return "";
+    }
+    start = epos;
+    return str.substr(bpos+1, epos-bpos-1);
+}
+
+void load_shif_sections(const string& fdata, map<string, string> secs)
+{
+    unsigned int pos = 0;
+    while((pos = fdata.find_first_of('(', pos)) != string::npos)
+    {
+        string key = substr_by_char('(', ')', pos, fdata);
+        string val = substr_by_char('{', '}', pos, fdata);
+        secs[key] = val;
+    }
+}
 
 void RetiMaterial::initialize_shader(const string& vertpath, const string& fragpath)
 {
@@ -47,7 +89,11 @@ RetiMaterial::RetiMaterial(const string& filePath)
     if(!matFile.is_open())
         RetiLog::logln("WARNING: Falied to open file: " + filePath + ", Segfault imminent.");
 
-    string line1, line2, line3;
+    string fdata;
+    load_file_to_string(fdata, matFile);
+
+
+    /*string line1, line2, line3;
     getline(matFile, line1);
     getline(matFile, line2);
     getline(matFile, line3);
@@ -64,7 +110,7 @@ RetiMaterial::RetiMaterial(const string& filePath)
     {
         getline(matFile, line);
         texNames.push_back(line);
-    }
+    }*/
 
     initialize_from_paths(dir + line1, dir + line2, texNames);
 

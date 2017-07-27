@@ -16,8 +16,8 @@ Shader Interface files specify how a number of parts and snippets of glsl code, 
 
 Details about which transfrom values to be passed. Value List:
 
- -  Name `PassMVP`. Possible values: `0` or `1`. If `1`, indicates that MVP matrix needs to be passed through `mat4 mvp_matrix`.
- -  Name `PassModel`. Possible values: `0` or `1`. If `1`, indicates that model matrix needs to be passed through `mat4 model_matrix`.
+ -  Name `PassMVP`. Possible values: `0` or `1`. If `1`, indicates that MVP matrix needs to be passed through `mat4 mvp_matrix`. Default 0.
+ -  Name `PassModel`. Possible values: `0` or `1`. If `1`, indicates that model matrix needs to be passed through `mat4 model_matrix`. Default 0.
 
 ### Section LightingData:
 
@@ -30,4 +30,11 @@ This section contains details regarding the lighitng model and pipeline the shad
 
 ### Section TexLists:
 
-List of texture uniform names, seperated by semicolons.
+List of texture uniform names, in double quotes (`""`), seperated by semicolons.
+
+### Section Code:
+
+Specification for code files.
+
+ -  Name `VertexShader`. String. Path relative to .shif file to vertex shader code in .shdr files. Must be specified.
+ -  Name `FragmentShader`. String. Path relative to .shif to fragment shader code in .shdr files. Must be specified.

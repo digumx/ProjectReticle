@@ -1,4 +1,13 @@
-NondirectionalForward_v.shdr
-NondirectionalForward_f.shdr
-1
-colorTexture
+(TransformData)
+{
+    PassMVP=1;
+}
+(TexLists)
+{
+    "colorTexture";
+}
+(Code)
+{
+    VertexShader="NondirectionalForward_v.shdr";
+    FragmentShader="NondirectionalForward_f.shdr";
+}
