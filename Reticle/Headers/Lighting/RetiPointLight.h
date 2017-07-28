@@ -6,6 +6,7 @@
 class RetiPointLight
 {
     RetiTransform transf;
+
 };
 
 #endif // RETIPOINTLIGHT_H_INCLUDED

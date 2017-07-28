@@ -18,17 +18,18 @@ Shif files are agnostic to whitespace formatting. Ignored characters are: Space 
 
 Details about which transfrom values to be passed. Value List:
 
- -  Name `PassMVP`. Possible values: `0` or `1`. If `1`, indicates that MVP matrix needs to be passed through `mat4 mvp_matrix`. Default 0.
+ -  Name `PassMVP`. Possible values: `0` or `1`. If `1`, indicates that MVP matrix needs to be passed through `mat4 mvp_matrix`. Default 1.
  -  Name `PassModel`. Possible values: `0` or `1`. If `1`, indicates that model matrix needs to be passed through `mat4 model_matrix`. Default 0.
 
 ### Section LightingData:
 
 This section contains details regarding the lighitng model and pipeline the shader belongs to. Value list:
 
- -  Name `PassLightPos`. Possible values: `0` or `1`. If `1`, it indicates that light positions must be passed to the shader through `vec3 lights[i].pos`.
- -  Name `PassLightColor`. Possible values: `0` or `1`. If `1`, it indicates that light color (strength multiplied) must be passed to the shader through `vec3 lights[i].color`.
- -  Name `PassKl`. Possible values: `0` or `1`. If `1`, indicates that Kl values must be passed through `float lights[i].kl`.
- -  Name `PassKp`. Possible values: `0` or `1`. If `1`, idnicates that Kq values must be passed through `float lights[i].kq`.
+ -  Name `PassLightPos`. Possible values: `0` or `1`. If `1`, it indicates that light positions must be passed to the shader through `vec3 lights[i].pos`. Default 1.
+ -  Name `PassLightColor`. Possible values: `0` or `1`. If `1`, it indicates that light color (strength multiplied) must be passed to the shader through `vec3 lights[i].color`.  Default 1.
+ -  Name `PassKl`. Possible values: `0` or `1`. If `1`, indicates that Kl values must be passed through `float lights[i].kl`. Default 1.
+ -  Name `PassKp`. Possible values: `0` or `1`. If `1`, idnicates that Kq values must be passed through `float lights[i].kq`. Default 1.
+ -  Name `MaxLights`. Integer values. Indicates the number of total lights the shader's uniform light buffer has.
 
 ### Section TexLists:
 

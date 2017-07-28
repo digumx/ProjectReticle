@@ -2985,7 +2985,7 @@
 	<Core/RetiSpinlock.h>
 	<Math/RetiTransform.h>
 
-1501232863 source:/mnt/data/git-repos/ProjectReticle/Reticle/Sources/RetiMaterial.cpp
+1501234683 source:/mnt/data/git-repos/ProjectReticle/Reticle/Sources/RetiMaterial.cpp
 	<includes.h>
 	<fstream>
 	<map>
@@ -2995,6 +2995,7 @@
 	<RetiShader.h>
 	<RetiRenderer.h>
 	<Core/RetiLog.h>
+	<Utils/RetiUtilities.h>
 
 1501223732 /mnt/data/git-repos/ProjectReticle/Reticle/Headers/RetiMaterial.h
 	<vector>
@@ -5767,4 +5768,10 @@
 	<RetiMaterial.h>
 	<RetiTexture.h>
 	<Core/RetiLog.h>
+
+1501235488 /mnt/data/git-repos/ProjectReticle/Reticle/Headers/Utils/RetiUtilities.h
+	<string>
+	<fstream>
+	<iostream>
+	<vector>
 
