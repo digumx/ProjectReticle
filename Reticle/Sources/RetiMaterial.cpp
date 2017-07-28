@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <map>
+#include <cctype>
 
 #include <RetiMaterial.h>
 #include <RetiTexture.h>
@@ -30,27 +31,64 @@ string substr_by_char(char bch, char ech, size_t& start, const string& str)
     size_t bpos;
     if((bpos = str.find_first_of(bch, start)) == string::npos)
     {
-        RetiLog::logln("Expected " + to_string(bch) + "After" + to_string(start));
+        RetiLog::logln("WARNING: Expected " + string(1, bch) + "After" + to_string(start));
         return "";
     }
     size_t epos;
-    if((bpos = str.find_first_of(bch, bpos)) == string::npos)
+    if((epos = str.find_first_of(ech, bpos)) == string::npos)
     {
-        RetiLog::logln("Unmatched " + to_string(bch) + "At" + to_string(bpos)));
+        RetiLog::logln("WARNING: Unmatched " + string(1, bch) + "At" + string(1, bpos));
         return "";
     }
     start = epos;
     return str.substr(bpos+1, epos-bpos-1);
 }
 
-void load_shif_sections(const string& fdata, map<string, string> secs)
+void break_list(const string& data, char ch, vector<string>& out)
 {
-    unsigned int pos = 0;
+    #ifdef DEBUG_CODE
+    RetiLog::logln("Breaking string " + data);
+    #endif // DEBUG_CODE
+    size_t pos = 0;
+    size_t prev = 0;
+    while((pos = data.find_first_of(ch, prev)) != string::npos)
+    {
+        out.push_back(data.substr(prev, pos-prev));
+        prev = pos + 1;
+    }
+}
+
+string trim_string(const string& str, const string& charset)
+{
+    size_t bg = str.find_first_not_of(charset);
+    size_t nd = str.find_last_not_of(charset);
+    return str.substr(bg, nd-bg+1);
+}
+
+void load_shif_sections(const string& fdata, map<string, string>& secs)
+{
+    size_t pos = 0;
     while((pos = fdata.find_first_of('(', pos)) != string::npos)
     {
-        string key = substr_by_char('(', ')', pos, fdata);
-        string val = substr_by_char('{', '}', pos, fdata);
+        string key = trim_string(substr_by_char('(', ')', pos, fdata), RETI_SHIFSYNTX_WHITECHARS);
+        string val = trim_string(substr_by_char('{', '}', pos, fdata), RETI_SHIFSYNTX_WHITECHARS);
         secs[key] = val;
+        pos++;
+    }
+}
+
+void load_keyval_section(const string& data, map<string, string>& keyval)
+{
+    vector<string> keyvalVectr;
+    break_list(data, ';', keyvalVectr);
+    size_t p;
+    for(unsigned int i = 0; i < keyvalVectr.size(); i++)
+    {
+        if((p = keyvalVectr[i].find_first_of('=')) == string::npos)
+            RetiLog::logln("WARNING: Malformed line: " + keyvalVectr[i]);
+        string key = trim_string(keyvalVectr[i].substr(0, p), RETI_SHIFSYNTX_WHITECHARS);
+        string val = trim_string(keyvalVectr[i].substr(p+1), RETI_SHIFSYNTX_WHITECHARS);
+        keyval[key] = val;
     }
 }
 
@@ -83,6 +121,10 @@ RetiMaterial::RetiMaterial() : RetiMaterial(RetiRenderer::getReticleRootDirector
 
 RetiMaterial::RetiMaterial(const string& filePath)
 {
+    #ifdef VERBOSE_ON
+    RetiLog::logln("Loading shif: " + filePath);
+    #endif // VERBOSE_ON
+
     string dir = filePath.substr(0, filePath.find_last_of({'/', '\\'}) + 1);
 
     ifstream matFile(filePath.c_str());
@@ -91,28 +133,30 @@ RetiMaterial::RetiMaterial(const string& filePath)
 
     string fdata;
     load_file_to_string(fdata, matFile);
+    map<string, string> name_to_data;
+    load_shif_sections(fdata, name_to_data);
 
-
-    /*string line1, line2, line3;
-    getline(matFile, line1);
-    getline(matFile, line2);
-    getline(matFile, line3);
-
-    int nTex = stoi(line3);
-
-    if(nTex > 15)
-        RetiLog::logln("WARNING: Support for more than 16 textures is platform dependent.");
-
+    /// Load texnames
     vector<string> texNames;
+    break_list(name_to_data[RETI_SHIFSYNTX_TEXNAMES], ';', texNames);
+    #ifdef DEBUG_CODE
+    RetiLog::logln("Number of textures: " + to_string(texNames.size()));
+    #endif // DEBUG_CODE
+    for(int i = 0; i < texNames.size(); i++)
+        texNames[i] = trim_string(texNames[i], "\"");
 
-    string line;
-    for(int i = 0; i < nTex; i++)
-    {
-        getline(matFile, line);
-        texNames.push_back(line);
-    }*/
+    const string& cdata = name_to_data[RETI_SHIFSYNTX_CODE];
+    map<string, string> codeKeyval;
+    load_keyval_section(cdata, codeKeyval);
+    string vCode = trim_string(codeKeyval[RETI_SHIFSYNTX_VERTEXCODE], "\"");
+    string fCode = trim_string(codeKeyval[RETI_SHIFSYNTX_FRAGMENTCODE], "\"");
 
-    initialize_from_paths(dir + line1, dir + line2, texNames);
+    if(vCode == "")
+        RetiLog::logln("WARNING: Vertex code reference is empty!");
+    if(fCode == "")
+        RetiLog::logln("WARNING: Fragment code reference is empty!");
+
+    initialize_from_paths(dir + vCode, dir + fCode, texNames);
 
     is_loaded = false;
 }
@@ -161,7 +205,7 @@ RetiMaterial::~RetiMaterial()
 {
     if(is_loaded)
     {
-        RetiLog::logln("WARNING: Deletine called on loaded material, attempting to unload.");
+        RetiLog::logln("WARNING: Delete called on loaded material, attempting to unload.");
         unloadMaterial();
     }
 }

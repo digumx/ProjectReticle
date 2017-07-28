@@ -3,6 +3,8 @@
 
 Shader Interface files specify how a number of parts and snippets of glsl code, including reticle's environment definition, alternatives for various stuff, and user-defined code. It also specifies the uniforms, all the alternatives for various rendering pipelines and pipelines supported in the first place. While this is a gist of the features to be added in the near future, it will be added gradually.
 
+Shif files are agnostic to whitespace formatting. Ignored characters are: Space (`' '`), Horizontal Tab (`'\t'`), Vertical Tab (`'\v'`), New Line (`'\n'`), Carriage Return (`'\r'`) and Form Feed (`'\f'`).
+
 ## Basic seperator syntax:
 
  -  Curly braces (`{}`) are used to specify sections. Names of sections come before the opening bracket, enclosed in round brackets (`()`).

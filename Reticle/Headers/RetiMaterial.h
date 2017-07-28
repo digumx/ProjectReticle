@@ -4,6 +4,14 @@
 /// The default shader-set to use
 #define RETI_DEFAULT_SHIF "/Shaders/NondirectionalForward.shif"
 
+/// Macro-mirror for stuff specified in DevDocs/ShifFilespec.md.
+#define RETI_SHIFSYNTX_TEXNAMES "TexLists"
+#define RETI_SHIFSYNTX_CODE "Code"
+#define RETI_SHIFSYNTX_NCODE 2                      /// 2 Lines in Code section.
+#define RETI_SHIFSYNTX_WHITECHARS " \t\n\v\f\r"     /// Whitespace characters.
+#define RETI_SHIFSYNTX_VERTEXCODE "VertexShader"
+#define RETI_SHIFSYNTX_FRAGMENTCODE "FragmentShader"
+
 #include <vector>
 #include <unordered_map>
 #include <string>
