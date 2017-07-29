@@ -1,6 +1,8 @@
 #ifndef RETICOLOR_H_INCLUDED
 #define RETICOLOR_H_INCLUDED
 
+#include <atomic>
+
 class RetiColor
 {
 public:
@@ -11,17 +13,22 @@ public:
     float a;
 
     RetiColor();
-    RetiColor(float x);
-    RetiColor(float v, float ia);
-    RetiColor(float ir, float ig, float ib, float ia);
+    RetiColor(float iv, float ia=1);
+    RetiColor(float ir, float ig, float ib, float ia=1);
+    RetiColor(const RetiColor& other);
+    ~RetiColor();
 
     void invert();
 
+    RetiColor& operator=(const RetiColor& col);
+    bool operator==(const RetiColor& col);
     RetiColor& operator+=(const RetiColor& col);
-    RetiColor& operato*=(const RetiColor& col);
-
+    RetiColor& operator*=(const RetiColor& col);
+    RetiColor& operator&=(const RetiColor& col);
 };
 
-RetiColor& operator+(const RetiColor& )
+RetiColor& operator+(const RetiColor& a, const RetiColor& b);
+RetiColor& operator*(const RetiColor& a, const RetiColor& b);
+RetiColor& operator&(const RetiColor& a, const RetiColor& b);
 
 #endif // RETICOLOR_H_INCLUDED

@@ -9,6 +9,9 @@
 #include <thread>
 #include <atomic>
 
+#include <Core/RetiSpinlock.h>
+#include <RetiColor.h>
+
 #include <includes.h>
 
 enum RetiRendererState
@@ -53,9 +56,9 @@ private:
     RetiCamera* cam;
     bool is_cam_user;
 
-    GLfloat clear_color_r;              // TODO: Spinlock
-    GLfloat clear_color_g;
-    GLfloat clear_color_b;
+    RetiSpinlock clear_color_lock;
+    RetiColor clear_color;
+    st::atomic<bool> clear_color_updated;
 
     RetiShader* common_shader;
     std::vector<RetiSceneObject*> objects;
@@ -91,7 +94,7 @@ public:
     void setDetachRenderer(bool detach);
     void setWindowSize(int x, int y);
     void setWindowTitle(const std::string& str);
-    void setClearColor(GLfloat R, GLfloat G, GLfloat B);
+    void setClearColor(const RetiColor& col);
 
     void useCamera(RetiCamera* n_cam);
 

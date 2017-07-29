@@ -38,16 +38,13 @@ void _key_callback(GLFWwindow* window, int glfw_code, int scan_code, int action,
     _callback_keyb->_glfw_key_callback(window, glfw_code, scan_code, action, mods);
 }
 
-RetiRenderer::RetiRenderer()
+RetiRenderer::RetiRenderer() : clear_color()
 {
     /// Set flags
     renderer_state = RETI_RENDERER_STATE_INACTIVE;
     win_x = 800;
     win_y = 600;
     title = "Reticle";
-    clear_color_r = 0.8f;
-    clear_color_g = 0.2f;
-    clear_color_b = 0.05f;
     detach_renderer = true;
     constr_init_flags();
 
@@ -62,16 +59,13 @@ RetiRenderer::RetiRenderer()
     nInstances++;
 }
 
-RetiRenderer::RetiRenderer(bool detach)
+RetiRenderer::RetiRenderer(bool detach) clear_color()
 {
     /// Set Flags
     renderer_state = RETI_RENDERER_STATE_INACTIVE;
     win_x = 800;
     win_y = 600;
     title = "Reticle";
-    clear_color_r = 0.8f;
-    clear_color_g = 0.2f;
-    clear_color_b = 0.05f;
     detach_renderer = detach;
     constr_init_flags();
 
@@ -86,7 +80,7 @@ RetiRenderer::RetiRenderer(bool detach)
     nInstances++;
 }
 
-RetiRenderer::RetiRenderer(const RetiRenderer& other)
+RetiRenderer::RetiRenderer(const RetiRenderer& other) clear_color(other.clear_color)
 {
     renderer_state = RETI_RENDERER_STATE_INACTIVE;
 
@@ -97,9 +91,6 @@ RetiRenderer::RetiRenderer(const RetiRenderer& other)
     win_x = other.win_x;
     win_y = other.win_y;
     title = other.title;
-    clear_color_r = other.clear_color_r;
-    clear_color_g = other.clear_color_g;
-    clear_color_b = other.clear_color_b;
     detach_renderer = other.detach_renderer;
     constr_init_flags();
 
@@ -125,6 +116,7 @@ void RetiRenderer::constr_init_flags()
     do_breakout = false;
     is_glew_init = false;
     is_window_init = false;
+    clear_color_updated = false;
 }
 
 RetiRenderer::~RetiRenderer()
@@ -249,16 +241,18 @@ void RetiRenderer::setWindowTitle(const string& str)
     title = str;
 }
 
-void RetiRenderer::setClearColor(GLfloat R, GLfloat G, GLfloat B)
+void RetiRenderer::setClearColor(const RetiColor& col)
 {
-    if(renderer_state != RETI_RENDERER_STATE_INACTIVE)
+    /*if(renderer_state != RETI_RENDERER_STATE_INACTIVE)
     {
-        RetiLog::logln("WARNING: Cannot set clear color on non-inactive renderer, call ignored.");
+        RetiLog::logln("WARNING: Cannot set clear clear_color on non-inactive renderer, call ignored.");
         return;
-    }
-    clear_color_r = R;
-    clear_color_g = G;
-    clear_color_b = B;
+    }*/
+    /// From now on, you can change clear color while rendering.
+    clear_color_lock.acquire();
+    clear_color = col;
+    clear_color_updated = true;
+    clear_color_lock.release();
 }
 
 void RetiRenderer::init_glfw()
@@ -324,6 +318,11 @@ void RetiRenderer::init_renderer()
     this->init_shader();
     this->init_objects();
 
+    clear_color_lock.acquire();
+    glClearColor(clear_color.r, clear_color.g, clear_color.b, clear_color.a);
+    clear_color_updated = true;
+    clear_color_lock.release();
+
     glClearColor(clear_color_r, clear_color_g, clear_color_b, 1.0f);
     glEnable(GL_DEPTH_TEST);
 }
@@ -358,6 +357,7 @@ void RetiRenderer::render_internal()
     renderer_state = RETI_RENDERER_STATE_ACTIVE;
     while(!glfwWindowShouldClose(this->window))
     {
+        /// Check for pause and break at top.
         if(is_renderer_paused)
         {
             this_thread::sleep_for(pause);
@@ -371,7 +371,17 @@ void RetiRenderer::render_internal()
             glfwSetWindowShouldClose(window, GLFW_TRUE);
         }
 
+        /// Poll GLFW-based input
         glfwPollEvents();
+
+        ///Update Clear color
+        if(!clear_color_updated)
+        {
+            clear_color_lock.acquire();
+            glClearColor(clear_color.r, clear_color.g, clear_color.b, clear_color.a);
+            clear_color_updated = true;
+            clear_color_lock.release();
+        }
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

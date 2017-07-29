@@ -2914,7 +2914,7 @@
 	<atomic>
 	<pthread.h>
 
-1500832463 /mnt/data/git-repos/ProjectReticle/Reticle/Headers/RetiRenderer.h
+1501345134 /mnt/data/git-repos/ProjectReticle/Reticle/Headers/RetiRenderer.h
 	<vector>
 	<string>
 	<iostream>
@@ -2922,6 +2922,8 @@
 	<chrono>
 	<thread>
 	<atomic>
+	<Core/RetiSpinlock.h>
+	<RetiColor.h>
 	<includes.h>
 
 1500832463 /mnt/data/git-repos/ProjectReticle/Reticle/Headers/includes.h
@@ -5774,4 +5776,17 @@
 	<fstream>
 	<iostream>
 	<vector>
+
+1501317804 /mnt/data/git-repos/ProjectReticle/Reticle/Headers/RetiColor.h
+	<atomic>
+
+1500899248 source:/mnt/data/git-repos/ProjectReticle/Reticle/Sources/Lighting/RetiPointLight.cpp
+	<Lighting/RetiPointLight.h>
+
+1501247012 /mnt/data/git-repos/ProjectReticle/Reticle/Headers/Lighting/RetiPointLight.h
+	<Math/RetiTransform.h>
+
+1501235488 source:/mnt/data/git-repos/ProjectReticle/Reticle/Sources/Utils/RetiUtilities.cpp
+	<Utils/RetiUtilities.h>
+	<Core/RetiLog.h>
 
