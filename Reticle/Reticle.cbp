@@ -228,6 +228,7 @@
 		<Unit filename="Sources/Lighting/RetiPointLight.cpp" />
 		<Unit filename="Sources/Math/RetiTransform.cpp" />
 		<Unit filename="Sources/RetiCamera.cpp" />
+		<Unit filename="Sources/RetiColor.cpp" />
 		<Unit filename="Sources/RetiKeyboard.cpp" />
 		<Unit filename="Sources/RetiMaterial.cpp" />
 		<Unit filename="Sources/RetiMesh.cpp" />
